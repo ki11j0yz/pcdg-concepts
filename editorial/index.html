@@ -1,0 +1,1818 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Care Dental Group</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,700;0,9..144,900;1,9..144,300;1,9..144,700;1,9..144,900&family=Outfit:wght@300;400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --white: #FFFFFF;
+      --off: #F9F6F1;
+      --off2: #EDE8DF;
+      --ink: #1A1409;
+      --ink2: #3D3325;
+      --mid: #7A6E62;
+      --gold: #B8882A;
+      --gold-lt: #E8C96A;
+      --warm: #C4673A;
+      --sage: #6B8F71;
+      --sage-lt: #C4D9C6;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--off);
+      color: var(--ink);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── CSS TOOTH LOGO ── */
+    .tooth-logo {
+      font-size: 28px;
+      color: #B8882A;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 32px;
+    }
+
+    .nav-outer {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      width: calc(100% - 48px);
+      max-width: 1140px;
+    }
+
+    .bubble-nav {
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(26, 20, 9, .08);
+      border-radius: 100px;
+      padding: 8px 8px 8px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 8px 32px rgba(26, 20, 9, .10);
+    }
+
+    .nav-brand {
+      font-family: 'Fraunces', serif;
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--ink);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      letter-spacing: -.01em;
+    }
+
+    .nav-brand-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 10px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-top: 1px;
+      font-weight: 400;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      letter-spacing: .05em;
+      color: var(--ink2);
+      text-decoration: none;
+      padding: 8px 14px;
+      border-radius: 100px;
+      transition: background .2s;
+    }
+
+    .nav-links a:hover {
+      background: var(--off);
+    }
+
+    .nav-book {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 10px 24px !important;
+      border-radius: 100px;
+      font-weight: 500 !important;
+      transition: background .2s, transform .2s !important;
+    }
+
+    .nav-book:hover {
+      background: var(--ink) !important;
+    }
+
+    .nav-ham {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .nav-ham span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--ink);
+      border-radius: 2px;
+      transition: all .3s;
+    }
+
+    /* MOBILE MENU */
+    .mob-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 900;
+      background: var(--off);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+    }
+
+    .mob-menu.open {
+      display: flex;
+    }
+
+    .mob-menu a {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .mob-menu a:hover {
+      color: var(--gold);
+    }
+
+    .mob-cta {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 13px !important;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--gold) !important;
+      color: var(--white) !important;
+      padding: 14px 36px !important;
+      border-radius: 100px;
+      margin-top: 8px;
+    }
+
+    .mob-x {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      background: none;
+      border: none;
+      font-size: 28px;
+      color: var(--ink2);
+      cursor: pointer;
+    }
+
+    /* ── HERO — FULL CINEMATIC ── */
+    .hero {
+      min-height: 100vh;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 70% 40%, rgba(184, 136, 42, .15) 0%, transparent 55%),
+        radial-gradient(ellipse at 20% 80%, rgba(107, 143, 113, .12) 0%, transparent 45%),
+        radial-gradient(ellipse at 90% 90%, rgba(196, 103, 58, .08) 0%, transparent 40%);
+    }
+
+    /* Giant watermark text */
+    .hero-wm {
+      position: absolute;
+      bottom: -60px;
+      left: -20px;
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 280px;
+      line-height: 1;
+      color: rgba(255, 255, 255, .03);
+      pointer-events: none;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
+
+    .hero-inner {
+      position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 140px 80px 80px;
+      max-width: 1140px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    /* The headline sits bottom-left, huge */
+    .hero-h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(60px, 9vw, 130px);
+      font-weight: 900;
+      line-height: .95;
+      color: var(--white);
+      letter-spacing: -.03em;
+      margin-bottom: 48px;
+      max-width: 900px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-h1 .line2 {
+      padding-left: 120px;
+      display: block;
+    }
+
+    .hero-h1 .line3 {
+      color: var(--sage-lt);
+      font-style: italic;
+    }
+
+    /* Bottom bar with stats + CTA */
+    .hero-bottom {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, .1);
+      flex-wrap: wrap;
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: 48px;
+    }
+
+    .hstat-num {
+      font-family: 'Fraunces', serif;
+      font-size: 42px;
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .hstat-lbl {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .45);
+      margin-top: 6px;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn-gold-pill {
+      background: var(--gold);
+      color: var(--ink);
+      padding: 16px 36px;
+      border-radius: 100px;
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all .25s;
+      display: inline-block;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-gold-pill:hover {
+      background: var(--gold-lt);
+      transform: translateY(-2px);
+    }
+
+    .btn-ghost-pill {
+      color: rgba(255, 255, 255, .7);
+      font-size: 13px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, .25);
+      padding: 15px 28px;
+      border-radius: 100px;
+      transition: all .25s;
+    }
+
+    .btn-ghost-pill:hover {
+      border-color: var(--white);
+      color: var(--white);
+    }
+
+    /* Vertical text on right edge */
+    .hero-vert {
+      position: absolute;
+      right: 40px;
+      top: 50%;
+      transform: translateY(-50%) rotate(90deg);
+      font-size: 10px;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .2);
+      white-space: nowrap;
+    }
+
+    /* ── MARQUEE ── */
+    .marquee {
+      background: var(--gold);
+      padding: 14px 0;
+      overflow: hidden;
+    }
+
+    .m-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: scroll 22s linear infinite;
+    }
+
+    .m-track span {
+      font-size: 12px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--ink);
+      font-weight: 500;
+      padding: 0 32px;
+      flex-shrink: 0;
+    }
+
+    .m-track span.dot {
+      color: rgba(26, 20, 9, .35);
+      padding: 0;
+    }
+
+    @keyframes scroll {
+      from {
+        transform: translateX(0);
+      }
+
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* ── INTRO STATEMENT ── */
+    .intro {
+      padding: 120px 80px;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 80px;
+      align-items: start;
+      background: var(--off);
+    }
+
+    .intro-label {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--warm);
+      font-weight: 500;
+      padding-top: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .intro-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--warm);
+      display: block;
+    }
+
+    .intro-statement {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(28px, 3.5vw, 48px);
+      font-weight: 300;
+      line-height: 1.3;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+
+    .intro-statement em {
+      font-style: italic;
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .intro-statement strong {
+      font-weight: 700;
+    }
+
+    /* ── SERVICES — ASYMMETRIC ── */
+    .services {
+      background: var(--white);
+      padding: 0;
+    }
+
+    /* Big label section */
+    .svc-header {
+      padding: 80px 80px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      border-bottom: 1px solid var(--off2);
+      padding-bottom: 40px;
+    }
+
+    .svc-h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 4.5vw, 64px);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--ink);
+      letter-spacing: -.03em;
+    }
+
+    .svc-h2 em {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .svc-count {
+      font-family: 'Fraunces', serif;
+      font-size: 96px;
+      font-weight: 900;
+      color: var(--off2);
+      line-height: 1;
+      letter-spacing: -.04em;
+    }
+
+    /* Horizontal list */
+    .svc-list {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .svc-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 2fr 120px;
+      align-items: center;
+      gap: 32px;
+      padding: 32px 80px;
+      border-bottom: 1px solid var(--off2);
+      transition: background .2s;
+      cursor: default;
+    }
+
+    .svc-row:hover {
+      background: var(--off);
+    }
+
+    .svc-row:hover .svc-row-num {
+      color: var(--gold);
+    }
+
+    .svc-row:hover .svc-row-link {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .svc-row-num {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--off2);
+      transition: color .3s;
+    }
+
+    .svc-row-icon {
+      font-size: 32px;
+    }
+
+    .svc-row-name {
+      font-family: 'Fraunces', serif;
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .svc-row-desc {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+
+    .svc-row-link {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      text-decoration: none;
+      font-weight: 500;
+      opacity: 0;
+      transform: translateX(-8px);
+      transition: all .3s;
+      justify-self: end;
+    }
+
+    /* ── ABOUT — OVERLAPPING EDITORIAL ── */
+    .about {
+      background: var(--off);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      min-height: 700px;
+    }
+
+    .about-photo {
+      background: linear-gradient(135deg, #C4D9C6 0%, #6B8F71 60%, #3D5A42 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 12px;
+      color: rgba(255, 255, 255, .4);
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      min-height: 600px;
+    }
+
+    .about-photo svg {
+      opacity: .3;
+    }
+
+    /* Overlapping content box */
+    .about-content {
+      padding: 80px 64px 80px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* Big decorative number */
+    .about-deco {
+      font-family: 'Fraunces', serif;
+      font-weight: 900;
+      font-size: 180px;
+      color: var(--off2);
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      line-height: 1;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .about-content>* {
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-eyebrow {
+      font-size: 11px;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--warm);
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .about-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--warm);
+      display: block;
+    }
+
+    .about-h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(32px, 3.5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      letter-spacing: -.02em;
+      margin-bottom: 24px;
+    }
+
+    .about-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .about-p {
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin-bottom: 16px;
+    }
+
+    .about-quote {
+      border-left: 3px solid var(--gold);
+      padding: 12px 20px;
+      margin: 28px 0;
+      font-family: 'Fraunces', serif;
+      font-size: 19px;
+      font-style: italic;
+      color: var(--ink2);
+      line-height: 1.5;
+    }
+
+    .about-facts {
+      display: flex;
+      gap: 36px;
+      margin-top: 36px;
+      padding-top: 36px;
+      border-top: 1px solid var(--off2);
+    }
+
+    .fact-num {
+      font-family: 'Fraunces', serif;
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .fact-num em {
+      color: var(--gold);
+      font-style: normal;
+    }
+
+    .fact-lbl {
+      font-size: 11px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--mid);
+      margin-top: 4px;
+    }
+
+    /* ── DOCTORS — STAGGERED ── */
+    .doctors {
+      background: var(--ink);
+      padding: 120px 80px;
+    }
+
+    .doc-eyebrow {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .doc-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      display: block;
+    }
+
+    .doc-h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -.03em;
+      margin-bottom: 80px;
+    }
+
+    .doc-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .doc-stagger {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .doc-item {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      background: rgba(255, 255, 255, .03);
+      border: 1px solid rgba(255, 255, 255, .06);
+      transition: background .3s;
+      overflow: hidden;
+    }
+
+    .doc-item:hover {
+      background: rgba(255, 255, 255, .06);
+    }
+
+    .doc-item:nth-child(even) {
+      direction: rtl;
+    }
+
+    .doc-item:nth-child(even)>* {
+      direction: ltr;
+    }
+
+    .doc-photo-box {
+      height: 280px;
+      background: linear-gradient(150deg, #2A3D2E 0%, #4A6B50 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 10px;
+      color: rgba(255, 255, 255, .25);
+      font-size: 12px;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .doc-photo-box svg {
+      opacity: .25;
+    }
+
+    .doc-detail {
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .doc-num {
+      font-family: 'Fraunces', serif;
+      font-size: 64px;
+      font-weight: 900;
+      color: rgba(255, 255, 255, .04);
+      line-height: 1;
+      margin-bottom: -20px;
+    }
+
+    .doc-name {
+      font-family: 'Fraunces', serif;
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+
+    .doc-cred {
+      font-size: 12px;
+      color: var(--gold);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .doc-spec {
+      font-size: 14px;
+      color: rgba(255, 255, 255, .45);
+      margin-top: 14px;
+      line-height: 1.6;
+    }
+
+    .doc-divider {
+      width: 40px;
+      height: 2px;
+      background: var(--gold);
+      margin: 20px 0;
+    }
+
+    /* ── TESTIMONIALS — EDITORIAL ── */
+    .testimonials {
+      background: var(--off);
+      padding: 0;
+    }
+
+    /* Giant featured quote */
+    .testi-hero {
+      padding: 100px 80px;
+      background: var(--white);
+      display: grid;
+      grid-template-columns: 120px 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .testi-hero-mark {
+      font-family: 'Fraunces', serif;
+      font-size: 200px;
+      font-weight: 900;
+      color: var(--off2);
+      line-height: .7;
+      padding-top: 10px;
+    }
+
+    .testi-hero-content {}
+
+    .testi-hero-stars {
+      color: var(--gold);
+      font-size: 18px;
+      letter-spacing: 4px;
+      margin-bottom: 24px;
+    }
+
+    .testi-hero-text {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(24px, 3vw, 40px);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.4;
+      color: var(--ink);
+      margin-bottom: 28px;
+    }
+
+    .testi-hero-author {
+      font-size: 12px;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+
+    /* Small testimonial grid below */
+    .testi-sub {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-top: 1px solid var(--off2);
+    }
+
+    .testi-sub-card {
+      padding: 48px;
+      border-right: 1px solid var(--off2);
+      transition: background .2s;
+    }
+
+    .testi-sub-card:last-child {
+      border-right: none;
+    }
+
+    .testi-sub-card:hover {
+      background: var(--white);
+    }
+
+    .testi-sub-stars {
+      color: var(--gold);
+      font-size: 13px;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+
+    .testi-sub-text {
+      font-family: 'Fraunces', serif;
+      font-size: 17px;
+      font-style: italic;
+      line-height: 1.65;
+      color: var(--ink2);
+      margin-bottom: 20px;
+    }
+
+    .testi-sub-author {
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--warm);
+    }
+
+    /* ── APPOINTMENT ── */
+    .appt {
+      background: var(--ink);
+    }
+
+    .appt-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      min-height: 700px;
+    }
+
+    .appt-left {
+      padding: 100px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .appt-eyebrow {
+      font-size: 11px;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .appt-eyebrow::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--gold);
+      display: block;
+    }
+
+    .appt-h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(36px, 4vw, 60px);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -.03em;
+      margin-bottom: 24px;
+      line-height: 1.0;
+    }
+
+    .appt-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .appt-sub {
+      font-size: 15px;
+      line-height: 1.8;
+      color: rgba(255, 255, 255, .5);
+      margin-bottom: 48px;
+    }
+
+    .contact-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, .06);
+      font-size: 14px;
+      color: rgba(255, 255, 255, .55);
+    }
+
+    .contact-row .icon {
+      font-size: 18px;
+      width: 24px;
+      text-align: center;
+    }
+
+    .appt-right {
+      padding: 80px;
+      display: flex;
+      align-items: center;
+    }
+
+    .appt-form {
+      width: 100%;
+    }
+
+    .form-title {
+      font-family: 'Fraunces', serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+
+    .form-row {
+      margin-bottom: 18px;
+    }
+
+    .form-row label {
+      display: block;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, .35);
+      margin-bottom: 8px;
+    }
+
+    .form-row input,
+    .form-row select,
+    .form-row textarea {
+      width: 100%;
+      padding: 13px 16px;
+      background: rgba(255, 255, 255, .06);
+      border: 1px solid rgba(255, 255, 255, .1);
+      border-radius: 4px;
+      color: var(--white);
+      font-family: 'Outfit', sans-serif;
+      font-size: 14px;
+      outline: none;
+      transition: border-color .2s;
+    }
+
+    .form-row input:focus,
+    .form-row select:focus,
+    .form-row textarea:focus {
+      border-color: var(--gold);
+    }
+
+    .form-row select option {
+      background: var(--ink2);
+    }
+
+    .form-row textarea {
+      height: 80px;
+      resize: vertical;
+    }
+
+    .form-2col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink2);
+      color: rgba(255, 255, 255, .35);
+      padding: 64px 80px 32px;
+      border-top: 1px solid rgba(255, 255, 255, .06);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-logo span {
+      display: block;
+      font-size: 11px;
+      font-family: 'Outfit', sans-serif;
+      color: var(--gold);
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    footer p {
+      font-size: 13px;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 11px;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .footer-col ul a {
+      color: rgba(255, 255, 255, .35);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color .2s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, .06);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .footer-bottom a {
+      color: rgba(255, 255, 255, .35);
+      text-decoration: none;
+    }
+
+    /* ── MOBILE BAR ── */
+    .mob-bar {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 99;
+      background: var(--white);
+      border-top: 1px solid var(--off2);
+      box-shadow: 0 -4px 20px rgba(26, 20, 9, .08);
+    }
+
+    .mob-bar-inner {
+      display: flex;
+    }
+
+    .mob-bar a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      color: var(--ink);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 16px;
+      width: 50%;
+    }
+
+    .mob-bar a.gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(32px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-h1 {
+      animation: fadeUp .7s .1s ease both;
+    }
+
+    .hero-bottom {
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-ham {
+        display: flex;
+      }
+
+      .hero-inner {
+        padding: 100px 24px 60px;
+      }
+
+      .hero-h1 {
+        font-size: 52px;
+      }
+
+      .hero-h1 .line2 {
+        padding-left: 40px;
+      }
+
+      .hero-wm {
+        font-size: 160px;
+      }
+
+      .hero-vert {
+        display: none;
+      }
+
+      .hero-stats {
+        gap: 28px;
+        flex-wrap: wrap;
+      }
+
+      .intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 72px 24px;
+      }
+
+      .svc-header {
+        padding: 60px 24px 32px;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+      }
+
+      .svc-count {
+        display: none;
+      }
+
+      .svc-row {
+        grid-template-columns: 48px 1fr;
+        padding: 24px;
+        gap: 16px;
+      }
+
+      .svc-row-desc,
+      .svc-row-link {
+        display: none;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-photo {
+        min-height: 280px;
+      }
+
+      .about-content {
+        padding: 48px 24px;
+      }
+
+      .about-deco {
+        display: none;
+      }
+
+      .about-facts {
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .doctors {
+        padding: 72px 24px;
+      }
+
+      .doc-item {
+        grid-template-columns: 1fr;
+        direction: ltr !important;
+      }
+
+      .doc-item:nth-child(even) {
+        direction: ltr;
+      }
+
+      .doc-photo-box {
+        height: 200px;
+      }
+
+      .doc-detail {
+        padding: 32px 28px;
+      }
+
+      .testi-hero {
+        padding: 64px 24px;
+        grid-template-columns: 60px 1fr;
+        gap: 24px;
+      }
+
+      .testi-hero-mark {
+        font-size: 100px;
+      }
+
+      .testi-sub {
+        grid-template-columns: 1fr;
+      }
+
+      .testi-sub-card {
+        border-right: none;
+        border-bottom: 1px solid var(--off2);
+        padding: 36px 24px;
+      }
+
+      .appt-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .appt-left {
+        padding: 72px 24px 48px;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, .06);
+      }
+
+      .appt-right {
+        padding: 48px 24px 120px;
+      }
+
+      .form-2col {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+
+      footer {
+        padding: 48px 24px 100px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .mob-bar {
+        display: block;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero-h1 {
+        font-size: 38px;
+      }
+
+      .hero-h1 .line2 {
+        padding-left: 20px;
+      }
+
+      .hero-stats {
+        gap: 20px;
+      }
+
+      .hstat-num {
+        font-size: 32px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- MOBILE MENU -->
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-x" onclick="tog()">✕</button>
+    <a href="#services" onclick="tog()">Services</a>
+    <a href="#doctors" onclick="tog()">Our Doctors</a>
+    <a href="#" onclick="tog()">Patient Info</a>
+    <a href="#" onclick="tog()">About</a>
+    <a href="#appointment" onclick="tog()">Contact</a>
+    <a href="#appointment" class="mob-cta" onclick="tog()">Book Appointment</a>
+  </div>
+
+  <!-- BUBBLE NAV -->
+  <div class="nav-outer">
+    <nav class="bubble-nav">
+      <div class="nav-brand">
+        <div class="tooth-logo"><i class="fa-solid fa-tooth"></i></div>
+        <div>Personal Care Dental<span class="nav-brand-sub">Group · Raytown, MO</span></div>
+      </div>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#doctors">Doctors</a>
+        <a href="#">Patient Info</a>
+        <a href="#">About</a>
+        <a href="#appointment" class="nav-book">Book Now</a>
+      </div>
+      <button class="nav-ham" id="ham" onclick="tog()">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-wm">SMILE</div>
+    <div class="hero-vert">Personal Care Dental Group · Est. 1980</div>
+
+    <div class="hero-inner">
+      <h1 class="hero-h1">
+        Your smile<br>
+        <span class="line2">deserves</span><br>
+        <span class="line3"><em>personal</em> care.</span>
+      </h1>
+
+      <div class="hero-bottom">
+        <div class="hero-stats">
+          <div>
+            <div class="hstat-num">45+</div>
+            <div class="hstat-lbl">Years in Raytown</div>
+          </div>
+          <div>
+            <div class="hstat-num">3</div>
+            <div class="hstat-lbl">Doctors</div>
+          </div>
+          <div>
+            <div class="hstat-num">4.9★</div>
+            <div class="hstat-lbl">Patient Rating</div>
+          </div>
+          <div>
+            <div class="hstat-num">A+</div>
+            <div class="hstat-lbl">BBB Rated</div>
+          </div>
+        </div>
+        <div class="hero-cta-group">
+          <a href="#appointment" class="btn-gold-pill">Request Appointment</a>
+          <a href="#services" class="btn-ghost-pill">Our Services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee">
+    <div class="m-track">
+      <span>General Dentistry</span><span class="dot"> ✦ </span>
+      <span>Pediatric Care</span><span class="dot"> ✦ </span>
+      <span>Cosmetic Dentistry</span><span class="dot"> ✦ </span>
+      <span>Invisalign®</span><span class="dot"> ✦ </span>
+      <span>Dental Implants</span><span class="dot"> ✦ </span>
+      <span>Sleep Apnea</span><span class="dot"> ✦ </span>
+      <span>All Ages Welcome</span><span class="dot"> ✦ </span>
+      <span>Nitrous Oxide</span><span class="dot"> ✦ </span>
+      <span>Now Accepting New Patients</span><span class="dot"> ✦ </span>
+      <span>General Dentistry</span><span class="dot"> ✦ </span>
+      <span>Pediatric Care</span><span class="dot"> ✦ </span>
+      <span>Cosmetic Dentistry</span><span class="dot"> ✦ </span>
+      <span>Invisalign®</span><span class="dot"> ✦ </span>
+      <span>Dental Implants</span><span class="dot"> ✦ </span>
+      <span>Sleep Apnea</span><span class="dot"> ✦ </span>
+      <span>All Ages Welcome</span><span class="dot"> ✦ </span>
+      <span>Nitrous Oxide</span><span class="dot"> ✦ </span>
+      <span>Now Accepting New Patients</span><span class="dot"> ✦ </span>
+    </div>
+  </div>
+
+  <!-- INTRO STATEMENT -->
+  <div class="intro">
+    <div class="intro-label">Est. 1980</div>
+    <p class="intro-statement">
+      We're not a corporate chain.<br>
+      We're <em>your neighbors</em> — a privately owned,<br>
+      <strong>multi-doctor practice</strong> that has served<br>
+      Raytown families for over four decades.
+    </p>
+  </div>
+
+  <!-- ═══ SERVICES ═══ -->
+  <section class="services" id="services">
+    <div class="svc-header">
+      <h2 class="svc-h2">What we<br><em>do best</em></h2>
+      <div class="svc-count">06</div>
+    </div>
+    <div class="svc-list">
+      <div class="svc-row">
+        <div class="svc-row-num">01</div>
+        <div class="svc-row-icon">🦷</div>
+        <div>
+          <div class="svc-row-name">General Dentistry</div>
+          <div class="svc-row-desc">Cleanings, exams, fillings, and preventive care to keep your smile healthy for life.
+          </div>
+        </div>
+        <a href="#" class="svc-row-link">Learn More →</a>
+      </div>
+      <div class="svc-row">
+        <div class="svc-row-num">02</div>
+        <div class="svc-row-icon">👶</div>
+        <div>
+          <div class="svc-row-name">Pediatric Care</div>
+          <div class="svc-row-desc">Gentle, friendly care for children starting at 6 months, building healthy habits
+            early.</div>
+        </div>
+        <a href="#" class="svc-row-link">Learn More →</a>
+      </div>
+      <div class="svc-row">
+        <div class="svc-row-num">03</div>
+        <div class="svc-row-icon">✨</div>
+        <div>
+          <div class="svc-row-name">Cosmetic Dentistry</div>
+          <div class="svc-row-desc">Whitenings, veneers, and smile makeovers that boost your confidence naturally.</div>
+        </div>
+        <a href="#" class="svc-row-link">Learn More →</a>
+      </div>
+      <div class="svc-row">
+        <div class="svc-row-num">04</div>
+        <div class="svc-row-icon">😁</div>
+        <div>
+          <div class="svc-row-name">Invisalign®</div>
+          <div class="svc-row-desc">Certified Invisalign providers since 2007. Straighten your smile discreetly.</div>
+        </div>
+        <a href="#" class="svc-row-link">Learn More →</a>
+      </div>
+      <div class="svc-row">
+        <div class="svc-row-num">05</div>
+        <div class="svc-row-icon">🔩</div>
+        <div>
+          <div class="svc-row-name">Dental Implants</div>
+          <div class="svc-row-desc">Permanent, natural-looking tooth replacement to restore your smile and function.
+          </div>
+        </div>
+        <a href="#" class="svc-row-link">Learn More →</a>
+      </div>
+      <div class="svc-row">
+        <div class="svc-row-num">06</div>
+        <div class="svc-row-icon">💤</div>
+        <div>
+          <div class="svc-row-name">Sleep Apnea</div>
+          <div class="svc-row-desc">Custom oral appliance therapy — a comfortable alternative to CPAP.</div>
+        </div>
+        <a href="#" class="svc-row-link">Learn More →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ABOUT ═══ -->
+  <section class="about">
+    <div class="about-grid">
+      <div class="about-photo">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+          <rect x="3" y="3" width="18" height="18" rx="2" />
+          <circle cx="8.5" cy="8.5" r="1.5" />
+          <polyline points="21 15 16 10 5 21" />
+        </svg>
+        <p>Office / Team Photo</p>
+      </div>
+      <div class="about-content">
+        <div class="about-deco">45</div>
+        <div class="about-eyebrow">Our Story</div>
+        <h2 class="about-h2">Rooted in<br><em>Raytown</em></h2>
+        <div class="about-quote">"We take time to listen, explain, and ensure every visit feels comfortable and
+          unhurried."</div>
+        <p class="about-p">Personal Care Dental Group has called Raytown home since 1980. Unlike corporate dental
+          chains, we know our patients by name and invest in relationships that last generations.</p>
+        <div class="about-facts">
+          <div>
+            <div class="fact-num">45<em>+</em></div>
+            <div class="fact-lbl">Years serving<br>Raytown</div>
+          </div>
+          <div>
+            <div class="fact-num">3</div>
+            <div class="fact-lbl">Experienced<br>doctors</div>
+          </div>
+          <div>
+            <div class="fact-num">4.9<em>★</em></div>
+            <div class="fact-lbl">Average patient<br>rating</div>
+          </div>
+        </div>
+        <a href="#" class="btn-gold-pill" style="margin-top:36px;align-self:flex-start;">Meet Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ DOCTORS ═══ -->
+  <section class="doctors" id="doctors">
+    <div class="doc-eyebrow">Our Physicians</div>
+    <h2 class="doc-h2">The people<br><em>behind your care</em></h2>
+    <div class="doc-stagger">
+      <div class="doc-item">
+        <div class="doc-photo-box">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+          </svg>
+          <span>Photo</span>
+        </div>
+        <div class="doc-detail">
+          <div class="doc-num">01</div>
+          <div class="doc-name">Dr. Rubelita James</div>
+          <div class="doc-cred">D.D.S.</div>
+          <div class="doc-divider"></div>
+          <div class="doc-spec">General & Cosmetic Dentistry · Invisalign Provider · 25+ years in practice</div>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-photo-box">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+          </svg>
+          <span>Photo</span>
+        </div>
+        <div class="doc-detail">
+          <div class="doc-num">02</div>
+          <div class="doc-name">Dr. Rodriguez</div>
+          <div class="doc-cred">D.D.S.</div>
+          <div class="doc-divider"></div>
+          <div class="doc-spec">General Dentistry · Patient Comfort Specialist · Welcoming patients of all ages</div>
+        </div>
+      </div>
+      <div class="doc-item">
+        <div class="doc-photo-box">
+          <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+            <circle cx="12" cy="8" r="4" />
+            <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
+          </svg>
+          <span>Photo</span>
+        </div>
+        <div class="doc-detail">
+          <div class="doc-num">03</div>
+          <div class="doc-name">Dr. Rachel Kim</div>
+          <div class="doc-cred">D.D.S.</div>
+          <div class="doc-divider"></div>
+          <div class="doc-spec">General & Pediatric Dentistry · Invisalign Provider · Sees patients from 6 months up
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section class="testimonials">
+    <div class="testi-hero">
+      <div class="testi-hero-mark">"</div>
+      <div class="testi-hero-content">
+        <div class="testi-hero-stars">★★★★★</div>
+        <p class="testi-hero-text">Dr. Rodriguez and her team are great! I truly enjoyed my experience — I felt welcomed
+          and cared for the whole time.</p>
+        <div class="testi-hero-author">— New Patient, Kansas City</div>
+      </div>
+    </div>
+    <div class="testi-sub">
+      <div class="testi-sub-card">
+        <div class="testi-sub-stars">★★★★★</div>
+        <p class="testi-sub-text">"Everyone was so nice to me and patient with me. I really appreciated it."</p>
+        <div class="testi-sub-author">— Verified Patient</div>
+      </div>
+      <div class="testi-sub-card">
+        <div class="testi-sub-stars">★★★★★</div>
+        <p class="testi-sub-text">"First visit. Very knowledgeable, friendly place. I'll be coming back for all my
+          dental care."</p>
+        <div class="testi-sub-author">— Verified Patient</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ APPOINTMENT ═══ -->
+  <section class="appt" id="appointment">
+    <div class="appt-grid">
+      <div class="appt-left">
+        <div class="appt-eyebrow">Get In Touch</div>
+        <h2 class="appt-h2">Let's talk<br>about <em>your</em><br>smile.</h2>
+        <p class="appt-sub">We're currently welcoming new patients of all ages. Our team will reach out within one
+          business day to confirm your appointment.</p>
+        <div class="contact-list">
+          <div class="contact-row"><span class="icon">📞</span>(816) 737-1110</div>
+          <div class="contact-row"><span class="icon">📍</span>9500 E 63rd St, Suite 103, Raytown, MO 64133</div>
+          <div class="contact-row"><span class="icon">🕐</span>Mon–Thu 7:30AM–6:30PM · Fri 7:30AM–1PM</div>
+          <div class="contact-row"><span class="icon">✉️</span>ins@personalcaredental.com</div>
+        </div>
+      </div>
+      <div class="appt-right">
+        <div class="appt-form">
+          <div class="form-title">Request an Appointment</div>
+          <div class="form-2col">
+            <div class="form-row"><label>First Name</label><input type="text" placeholder="Jane"></div>
+            <div class="form-row"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+          </div>
+          <div class="form-row"><label>Phone</label><input type="tel" placeholder="(816) 555-0100"></div>
+          <div class="form-row"><label>Email</label><input type="email" placeholder="jane@email.com"></div>
+          <div class="form-row">
+            <label>Service Needed</label>
+            <select>
+              <option>General Cleaning / Exam</option>
+              <option>Cosmetic Consultation</option>
+              <option>Invisalign Consultation</option>
+              <option>Dental Implants</option>
+              <option>Pediatric Visit</option>
+              <option>Sleep Apnea</option>
+              <option>Emergency</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-row">
+            <label>New or Existing Patient?</label>
+            <select>
+              <option>New Patient</option>
+              <option>Existing Patient</option>
+            </select>
+          </div>
+          <div class="form-row"><label>Notes</label><textarea
+              placeholder="Insurance, preferred times, questions..."></textarea></div>
+          <button class="btn-gold-pill" style="width:100%;padding:16px;font-size:13px;">Submit Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">Personal Care Dental Group<span>Group · Raytown, Missouri</span></div>
+        <p>A privately owned, multi-doctor practice serving Raytown and the greater Kansas City metro since 1980.
+          Accepting patients of all ages.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#">General Dentistry</a></li>
+          <li><a href="#">Pediatric Care</a></li>
+          <li><a href="#">Cosmetic Dentistry</a></li>
+          <li><a href="#">Invisalign®</a></li>
+          <li><a href="#">Dental Implants</a></li>
+          <li><a href="#">Sleep Apnea</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Practice</h4>
+        <ul>
+          <li><a href="#">Meet Our Doctors</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Patient Forms</a></li>
+          <li><a href="#">Insurance & Billing</a></li>
+          <li><a href="#">Accessibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="#">(816) 737-1110</a></li>
+          <li><a href="#">ins@personalcaredental.com</a></li>
+          <li><a href="#">9500 E 63rd St #103</a></li>
+          <li><a href="#">Raytown, MO 64133</a></li>
+          <li><a href="#">Get Directions</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Personal Care Dental Group, LLC. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Accessibility</a></span>
+    </div>
+  </footer>
+
+  <!-- MOBILE BAR -->
+  <div class="mob-bar">
+    <div class="mob-bar-inner">
+      <a href="tel:8167371110">📞 Call Us</a>
+      <a href="#appointment" class="gold">📅 Book Now</a>
+    </div>
+  </div>
+
+  <script>
+    function tog() {
+      const m = document.getElementById('mobMenu');
+      const h = document.getElementById('ham');
+      m.classList.toggle('open');
+      h.classList.toggle('open');
+      document.body.style.overflow = m.classList.contains('open') ? 'hidden' : '';
+    }
+  </script>
+
+</body>
+
+</html>

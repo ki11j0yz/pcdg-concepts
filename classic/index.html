@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Care Dental Group — J29 Inspired</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:    #FFFFFF;
+      --off:      #F9F6F1;
+      --off2:     #F0EBE3;
+      --ink:      #1A1409;
+      --ink2:     #3D3325;
+      --mid:      #7A6E62;
+      --gold:     #B8882A;
+      --gold-lt:  #E8C96A;
+      --warm:     #D4845A;
+      --warm-lt:  #F2C4A8;
+      --sage:     #6B8F71;
+      --sage-lt:  #C4D9C6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--white);
+      color: var(--ink);
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    /* ── TOP BAR ── */
+    .top-bar {
+      background: var(--ink);
+      color: rgba(255,255,255,.6);
+      padding: 9px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 12px; letter-spacing: .06em;
+    }
+    .top-bar a { color: var(--gold-lt); text-decoration: none; }
+    .top-bar-right { display: flex; gap: 24px; align-items: center; }
+
+    /* ── BUBBLE NAV ── */
+    .bubble-wrap {
+      position: sticky; top: 0; z-index: 100;
+      padding: 16px 40px;
+      background: rgba(249,246,241,0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--off2);
+    }
+    .bubble-nav {
+      background: var(--white);
+      border-radius: 100px;
+      padding: 8px 8px 8px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      box-shadow: 0 4px 24px rgba(26,20,9,.08), 0 0 0 1px rgba(26,20,9,.06);
+      max-width: 1100px; margin: 0 auto;
+    }
+    .nav-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--ink); letter-spacing: -.01em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-logo-sub {
+      font-family: 'Outfit', sans-serif;
+      font-size: 10px; font-weight: 400; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--gold);
+      display: block; margin-top: 1px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 2px; }
+    .nav-links a {
+      font-size: 13px; letter-spacing: .04em;
+      color: var(--ink2); text-decoration: none;
+      padding: 8px 16px; border-radius: 100px;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover { background: var(--off); }
+    .nav-cta {
+      background: var(--gold);
+      color: var(--white) !important;
+      padding: 11px 28px !important;
+      border-radius: 100px;
+      font-weight: 500 !important;
+      letter-spacing: .06em !important;
+      transition: background .2s, transform .2s !important;
+    }
+    .nav-cta:hover { background: var(--ink) !important; transform: scale(1.02); }
+    .nav-hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 8px;
+    }
+    .nav-hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--ink); border-radius: 2px; transition: all .3s;
+    }
+
+    /* ── MOBILE MENU ── */
+    .mobile-menu {
+      display: none; position: fixed; inset: 0; z-index: 900;
+      background: var(--off); flex-direction: column;
+      align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a {
+      font-family: 'Fraunces', serif; font-size: 34px;
+      color: var(--ink); text-decoration: none; transition: color .2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+    .mob-cta-btn {
+      font-family: 'Outfit', sans-serif !important;
+      font-size: 14px !important; letter-spacing: .1em;
+      text-transform: uppercase; background: var(--gold) !important;
+      color: var(--white) !important; padding: 14px 40px !important;
+      border-radius: 100px; margin-top: 8px;
+    }
+    .mob-close {
+      position: absolute; top: 24px; right: 28px;
+      background: none; border: none; font-size: 28px;
+      color: var(--ink2); cursor: pointer;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: calc(100vh - 120px);
+      background: var(--off);
+    }
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 80px 64px 80px 80px;
+      position: relative;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; top: 0; right: 0; bottom: 0; width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--off2) 30%, var(--off2) 70%, transparent);
+    }
+    .hero-kicker {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--warm); font-weight: 500; margin-bottom: 28px;
+    }
+    .hero-kicker-line { width: 28px; height: 1px; background: var(--warm); }
+    .hero-h1 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(48px, 5.5vw, 80px);
+      font-weight: 700; line-height: 1.05;
+      color: var(--ink); margin-bottom: 28px;
+      letter-spacing: -.02em;
+    }
+    .hero-h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub {
+      font-size: 16px; line-height: 1.8;
+      color: var(--mid); max-width: 440px; margin-bottom: 44px;
+    }
+    .hero-btns { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+    .btn-fill {
+      background: var(--ink); color: var(--white);
+      padding: 14px 32px; border-radius: 100px;
+      font-size: 13px; letter-spacing: .08em; text-transform: uppercase;
+      font-weight: 500; text-decoration: none;
+      transition: background .2s, transform .2s;
+      display: inline-block;
+    }
+    .btn-fill:hover { background: var(--gold); transform: translateY(-2px); }
+    .btn-line {
+      color: var(--ink); font-size: 13px; letter-spacing: .08em;
+      text-transform: uppercase; text-decoration: none;
+      border-bottom: 1px solid var(--ink); padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .btn-line:hover { color: var(--gold); border-color: var(--gold); }
+
+    .hero-proof {
+      display: flex; gap: 32px; margin-top: 56px;
+      padding-top: 40px; border-top: 1px solid var(--off2);
+    }
+    .proof-item .num {
+      font-family: 'Fraunces', serif;
+      font-size: 38px; font-weight: 700; color: var(--ink); line-height: 1;
+    }
+    .proof-item .num span { color: var(--gold); }
+    .proof-item .lbl {
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--mid); margin-top: 4px;
+    }
+
+    /* Hero right — photo area */
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: var(--sage-lt);
+    }
+    .hero-photo {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(160deg, #C4D9C6 0%, #8FAF95 50%, #5A7D60 100%);
+      color: rgba(255,255,255,.5); gap: 12px;
+      font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+    }
+    .hero-photo svg { opacity: .4; }
+    /* Floating badge */
+    .hero-float {
+      position: absolute; bottom: 36px; left: -16px;
+      background: var(--white); border-radius: 12px;
+      padding: 18px 22px;
+      box-shadow: 0 12px 40px rgba(26,20,9,.14);
+      display: flex; align-items: center; gap: 14px;
+    }
+    .float-icon { font-size: 32px; }
+    .float-text strong { display: block; font-size: 15px; color: var(--ink); font-weight: 600; }
+    .float-text span { font-size: 12px; color: var(--mid); }
+    /* Accent tag top right */
+    .hero-accent {
+      position: absolute; top: 32px; right: 32px;
+      background: var(--gold); color: var(--white);
+      border-radius: 100px; padding: 8px 18px;
+      font-size: 11px; letter-spacing: .12em; text-transform: uppercase; font-weight: 500;
+    }
+
+    /* ── TRUST STRIP ── */
+    .trust-strip {
+      background: var(--ink);
+      padding: 24px 80px;
+      display: flex; align-items: center; justify-content: space-around;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 12px;
+      color: rgba(255,255,255,.7);
+    }
+    .trust-icon { font-size: 20px; }
+    .trust-text strong { display: block; font-size: 14px; color: var(--white); font-weight: 500; }
+    .trust-text span { font-size: 12px; }
+    .trust-sep { width: 1px; height: 28px; background: rgba(255,255,255,.12); }
+
+    /* ── SERVICES ── */
+    .services { padding: 112px 80px; background: var(--white); }
+    .sec-eyebrow {
+      font-size: 11px; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--warm); font-weight: 500; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .sec-eyebrow::before { content: ''; width: 24px; height: 1px; background: var(--warm); display: block; }
+    .sec-h2 {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(34px, 4vw, 54px);
+      font-weight: 700; line-height: 1.1;
+      color: var(--ink); margin-bottom: 16px;
+      letter-spacing: -.02em;
+    }
+    .sec-h2 em { font-style: italic; color: var(--gold); }
+    .sec-sub {
+      font-size: 15px; color: var(--mid); line-height: 1.75;
+      max-width: 560px; margin-bottom: 64px;
+    }
+
+    .svc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .svc-card {
+      background: var(--off);
+      border-radius: 4px;
+      padding: 40px 32px;
+      position: relative; overflow: hidden;
+      transition: transform .3s, box-shadow .3s;
+      cursor: default;
+    }
+    .svc-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 48px rgba(26,20,9,.10);
+    }
+    .svc-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--warm), var(--gold));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s;
+    }
+    .svc-card:hover::before { transform: scaleX(1); }
+    .svc-icon { font-size: 36px; margin-bottom: 20px; }
+    .svc-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 600; color: var(--ink); margin-bottom: 10px;
+    }
+    .svc-desc { font-size: 14px; line-height: 1.75; color: var(--mid); }
+    .svc-link {
+      display: inline-block; margin-top: 20px;
+      font-size: 12px; letter-spacing: .1em; text-transform: uppercase;
+      color: var(--gold); text-decoration: none; font-weight: 500;
+      transition: color .2s;
+    }
+    .svc-link:hover { color: var(--warm); }
+
+    /* ── ABOUT ── */
+    .about {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--off);
+      min-height: 580px;
+    }
+    .about-img {
+      background: linear-gradient(135deg, var(--sage-lt) 0%, var(--sage) 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+      color: rgba(255,255,255,.5);
+      font-size: 13px; letter-spacing: .1em; text-transform: uppercase;
+      position: relative;
+    }
+    .about-img svg { opacity: .35; }
+    .about-content {
+      padding: 80px 64px; display: flex; flex-direction: column; justify-content: center;
+    }
+    .about-content .sec-eyebrow::before { background: var(--warm); }
+    .about-content p { font-size: 15px; line-height: 1.85; color: var(--mid); margin-bottom: 16px; }
+
+    /* Pull quote */
+    .pull-quote {
+      border-left: 3px solid var(--gold);
+      padding: 12px 20px; margin: 24px 0;
+      font-family: 'Fraunces', serif;
+      font-size: 18px; font-style: italic; color: var(--ink2);
+      line-height: 1.5;
+    }
+
+    /* ── DOCTORS ── */
+    .doctors { padding: 112px 80px; background: var(--white); }
+    .doc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 28px; margin-top: 64px;
+    }
+    .doc-card {
+      border-radius: 4px; overflow: hidden;
+      background: var(--off);
+      transition: transform .3s;
+    }
+    .doc-card:hover { transform: translateY(-6px); }
+    .doc-photo {
+      height: 280px;
+      background: linear-gradient(150deg, #C4D9C6 0%, #6B8F71 100%);
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px;
+      color: rgba(255,255,255,.4); font-size: 12px;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .doc-photo svg { opacity: .3; }
+    .doc-info { padding: 28px 28px 32px; }
+    .doc-name {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 700; color: var(--ink); margin-bottom: 4px;
+    }
+    .doc-cred { font-size: 12px; color: var(--gold); letter-spacing: .1em; text-transform: uppercase; font-weight: 500; }
+    .doc-spec { font-size: 13px; color: var(--mid); margin-top: 10px; line-height: 1.6; }
+
+    /* ── TESTIMONIALS ── */
+    .testimonials { padding: 112px 80px; background: var(--off); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 20px; margin-top: 64px;
+    }
+    .testi-card {
+      background: var(--white); border-radius: 4px;
+      padding: 36px; transition: box-shadow .3s;
+    }
+    .testi-card:hover { box-shadow: 0 12px 40px rgba(26,20,9,.08); }
+    .testi-stars { color: var(--gold); font-size: 16px; letter-spacing: 3px; margin-bottom: 16px; }
+    .testi-text {
+      font-family: 'Fraunces', serif;
+      font-size: 16px; line-height: 1.75;
+      color: var(--ink2); font-style: italic; margin-bottom: 24px;
+    }
+    .testi-author { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--warm); }
+
+    /* ── APPOINTMENT ── */
+    .appt {
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--white);
+      padding: 112px 80px; gap: 80px; align-items: start;
+    }
+    .appt-left .sec-h2 { margin-bottom: 16px; }
+    .appt-left p { font-size: 15px; line-height: 1.8; color: var(--mid); margin-bottom: 36px; }
+    .contact-list { display: flex; flex-direction: column; gap: 0; }
+    .contact-row {
+      display: flex; align-items: center; gap: 14px;
+      font-size: 14px; color: var(--mid);
+      padding: 16px 0; border-bottom: 1px solid var(--off2);
+    }
+    .contact-row .icon { font-size: 18px; width: 24px; text-align: center; }
+
+    .appt-form {
+      background: var(--off); border-radius: 8px; padding: 48px;
+    }
+    .form-title {
+      font-family: 'Fraunces', serif;
+      font-size: 28px; font-weight: 700; color: var(--ink); margin-bottom: 32px;
+    }
+    .form-row { margin-bottom: 18px; }
+    .form-row label {
+      display: block; font-size: 11px; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--mid); margin-bottom: 7px;
+    }
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; padding: 13px 16px;
+      background: var(--white); border: 1px solid var(--off2);
+      border-radius: 4px; color: var(--ink);
+      font-family: 'Outfit', sans-serif; font-size: 14px;
+      outline: none; transition: border-color .2s;
+    }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-row textarea { height: 90px; resize: vertical; }
+    .form-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--ink); color: rgba(255,255,255,.4);
+      padding: 64px 80px 32px;
+    }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo {
+      font-family: 'Fraunces', serif;
+      font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 16px;
+    }
+    .footer-logo span { display: block; font-size: 11px; font-family: 'Outfit', sans-serif; color: var(--gold); letter-spacing: .18em; text-transform: uppercase; margin-top: 4px; }
+    footer p { font-size: 13px; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--white); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul a { color: rgba(255,255,255,.4); text-decoration: none; font-size: 13px; transition: color .2s; }
+    .footer-col ul a:hover { color: var(--gold); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08); padding-top: 24px;
+      display: flex; justify-content: space-between; font-size: 12px;
+    }
+    .footer-bottom a { color: rgba(255,255,255,.4); text-decoration: none; }
+
+    /* ── MOBILE BAR ── */
+    .mobile-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: var(--white); border-top: 1px solid var(--off2);
+      box-shadow: 0 -4px 20px rgba(26,20,9,.08);
+    }
+    .mobile-bar-inner { display: flex; }
+    .mobile-bar a {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      color: var(--ink); text-decoration: none;
+      font-size: 13px; font-weight: 500; padding: 16px; width: 50%;
+    }
+    .mobile-bar a.filled { background: var(--gold); color: var(--white); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-kicker  { animation: fadeUp .5s ease both; }
+    .hero-h1      { animation: fadeUp .5s .1s ease both; }
+    .hero-sub     { animation: fadeUp .5s .2s ease both; }
+    .hero-btns    { animation: fadeUp .5s .3s ease both; }
+    .hero-proof   { animation: fadeUp .5s .4s ease both; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 960px) {
+      .top-bar { display: none; }
+      .bubble-wrap { padding: 12px 16px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-right { height: 280px; order: -1; }
+      .hero-left { padding: 40px 24px 60px; }
+      .hero-h1 { font-size: 40px; }
+      .hero-proof { gap: 20px; flex-wrap: wrap; }
+
+      .trust-strip { padding: 20px 24px; gap: 16px; }
+      .trust-sep { display: none; }
+
+      .services, .doctors, .testimonials, .appt { padding: 72px 24px; }
+      .svc-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .doc-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .testi-grid { grid-template-columns: 1fr; }
+
+      .about { grid-template-columns: 1fr; }
+      .about-img { height: 260px; }
+      .about-content { padding: 48px 24px; }
+
+      .appt { grid-template-columns: 1fr; gap: 48px; }
+      .form-2col { grid-template-columns: 1fr; gap: 0; }
+      .appt-form { padding: 28px 20px; }
+
+      footer { padding: 48px 24px 100px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+      .footer-bottom { flex-direction: column; gap: 8px; }
+
+      .mobile-bar { display: block; }
+    }
+
+    @media (max-width: 520px) {
+      .hero-h1 { font-size: 34px; }
+      .svc-grid, .doc-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .sec-h2 { font-size: 30px; }
+      .appt { padding-bottom: 120px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mob-close" onclick="toggleMenu()">✕</button>
+  <a href="#services" onclick="toggleMenu()">Services</a>
+  <a href="#doctors" onclick="toggleMenu()">Our Doctors</a>
+  <a href="#" onclick="toggleMenu()">Patient Info</a>
+  <a href="#" onclick="toggleMenu()">About</a>
+  <a href="#appointment" onclick="toggleMenu()">Contact</a>
+  <a href="#appointment" class="mob-cta-btn" onclick="toggleMenu()">Book Appointment</a>
+</div>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <span>9500 E 63rd St, Suite 103 · Raytown, MO 64133</span>
+  <div class="top-bar-right">
+    <span>Mon–Thu: 7:30AM–6:30PM · Fri: 7:30AM–1PM</span>
+    <a href="tel:8167371110">📞 (816) 737-1110</a>
+  </div>
+</div>
+
+<!-- BUBBLE NAV -->
+<div class="bubble-wrap">
+  <nav class="bubble-nav">
+    <div class="nav-logo">
+      🦷
+      <div>
+        Personal Care Dental
+        <span class="nav-logo-sub">Group · Raytown, MO</span>
+      </div>
+    </div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#doctors">Our Doctors</a>
+      <a href="#">Patient Info</a>
+      <a href="#">About</a>
+      <a href="#appointment" class="nav-cta">Book Appointment</a>
+    </div>
+    <button class="nav-hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-kicker">
+      <span class="hero-kicker-line"></span>
+      Serving Raytown Since 1980
+    </div>
+    <h1 class="hero-h1">
+      Your smile.<br>Our <em>personal</em><br>commitment.
+    </h1>
+    <p class="hero-sub">Three experienced doctors. All ages welcome — from 6 months to 96. A community practice built on genuine relationships and exceptional care.</p>
+    <div class="hero-btns">
+      <a href="#appointment" class="btn-fill">Request Appointment</a>
+      <a href="#services" class="btn-line">See Our Services</a>
+    </div>
+    <div class="hero-proof">
+      <div class="proof-item">
+        <div class="num">45<span>+</span></div>
+        <div class="lbl">Years in<br>Raytown</div>
+      </div>
+      <div class="proof-item">
+        <div class="num">3</div>
+        <div class="lbl">Experienced<br>Doctors</div>
+      </div>
+      <div class="proof-item">
+        <div class="num">4.9<span>★</span></div>
+        <div class="lbl">Patient<br>Rating</div>
+      </div>
+      <div class="proof-item">
+        <div class="num">A<span>+</span></div>
+        <div class="lbl">BBB<br>Accredited</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-photo">
+      <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+        <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+      </svg>
+      <p>Office / Team Photo</p>
+    </div>
+    <div class="hero-float">
+      <div class="float-icon">🦷</div>
+      <div class="float-text">
+        <strong>BBB A+ Accredited</strong>
+        <span>Member since 2009</span>
+      </div>
+    </div>
+    <div class="hero-accent">Now Accepting New Patients</div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <span class="trust-icon">✓</span>
+    <div class="trust-text"><strong>All Ages Welcome</strong><span>6 months & up</span></div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <span class="trust-icon">💳</span>
+    <div class="trust-text"><strong>Accepts Insurance</strong><span>Most major plans</span></div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <span class="trust-icon">😌</span>
+    <div class="trust-text"><strong>Nitrous Oxide</strong><span>Gentle comfort option</span></div>
+  </div>
+  <div class="trust-sep"></div>
+  <div class="trust-item">
+    <span class="trust-icon">🕐</span>
+    <div class="trust-text"><strong>Extended Hours</strong><span>Mon–Thu until 6:30 PM</span></div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="sec-eyebrow">What We Offer</div>
+  <h2 class="sec-h2">Comprehensive care<br><em>under one roof</em></h2>
+  <p class="sec-sub">From your child's first visit to advanced cosmetic work, our team handles it all — no referrals needed for most procedures.</p>
+  <div class="svc-grid">
+    <div class="svc-card">
+      <div class="svc-icon">🦷</div>
+      <div class="svc-name">General Dentistry</div>
+      <p class="svc-desc">Cleanings, exams, fillings, and preventive care to keep your smile healthy for life.</p>
+      <a href="#" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">👶</div>
+      <div class="svc-name">Pediatric Care</div>
+      <p class="svc-desc">Gentle, friendly care for children starting at 6 months, building healthy habits early.</p>
+      <a href="#" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">✨</div>
+      <div class="svc-name">Cosmetic Dentistry</div>
+      <p class="svc-desc">Whitenings, veneers, and smile makeovers that boost your confidence naturally.</p>
+      <a href="#" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">😁</div>
+      <div class="svc-name">Invisalign®</div>
+      <p class="svc-desc">Certified Invisalign providers since 2007. Straighten your smile discreetly.</p>
+      <a href="#" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">🔩</div>
+      <div class="svc-name">Dental Implants</div>
+      <p class="svc-desc">Permanent, natural-looking tooth replacement to restore your smile and function.</p>
+      <a href="#" class="svc-link">Learn More →</a>
+    </div>
+    <div class="svc-card">
+      <div class="svc-icon">💤</div>
+      <div class="svc-name">Sleep Apnea</div>
+      <p class="svc-desc">Custom oral appliance therapy to treat sleep apnea — a comfortable alternative to CPAP.</p>
+      <a href="#" class="svc-link">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-img">
+    <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+      <rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/>
+    </svg>
+    <p>Office Interior Photo</p>
+  </div>
+  <div class="about-content">
+    <div class="sec-eyebrow">Our Story</div>
+    <h2 class="sec-h2">A Raytown practice<br><em>rooted in community</em></h2>
+    <div class="pull-quote">"We take time to listen, explain, and ensure every visit feels comfortable."</div>
+    <p>Personal Care Dental Group has been part of the Raytown community since 1980 — a multi-doctor, privately owned practice where patients of every age feel at home.</p>
+    <p>Unlike corporate dental chains, we know our patients by name. We invest in long-term relationships, not quick appointments.</p>
+    <a href="#" class="btn-fill" style="margin-top:32px;align-self:flex-start;">Meet Our Team</a>
+  </div>
+</section>
+
+<!-- DOCTORS -->
+<section class="doctors" id="doctors">
+  <div class="sec-eyebrow">Our Physicians</div>
+  <h2 class="sec-h2">Meet the doctors<br><em>behind your care</em></h2>
+  <div class="doc-grid">
+    <div class="doc-card">
+      <div class="doc-photo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Photo</span>
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Dr. Rubelita James</div>
+        <div class="doc-cred">D.D.S.</div>
+        <div class="doc-spec">General & Cosmetic Dentistry · Invisalign Provider</div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-photo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Photo</span>
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Dr. Rodriguez</div>
+        <div class="doc-cred">D.D.S.</div>
+        <div class="doc-spec">General Dentistry · Patient Comfort Focused</div>
+      </div>
+    </div>
+    <div class="doc-card">
+      <div class="doc-photo">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+        <span>Photo</span>
+      </div>
+      <div class="doc-info">
+        <div class="doc-name">Dr. Rachel Kim</div>
+        <div class="doc-cred">D.D.S.</div>
+        <div class="doc-spec">General & Pediatric Dentistry · Invisalign Provider</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials">
+  <div class="sec-eyebrow">Patient Stories</div>
+  <h2 class="sec-h2">What our patients <em>say</em></h2>
+  <div class="testi-grid">
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Everyone was so nice to me and patient with me. I really appreciated it."</p>
+      <div class="testi-author">— Verified Patient</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"Dr. Rodriguez and her team are great! I felt welcomed and cared for the whole time."</p>
+      <div class="testi-author">— New Patient, Kansas City</div>
+    </div>
+    <div class="testi-card">
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">"First visit. Very knowledgeable, friendly place. I'll be coming back for all my dental care."</p>
+      <div class="testi-author">— Verified Patient</div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="appt" id="appointment">
+  <div class="appt-left">
+    <div class="sec-eyebrow">Get In Touch</div>
+    <h2 class="sec-h2">Ready to schedule<br><em>your visit?</em></h2>
+    <p>We're currently welcoming new patients of all ages. Fill out the form and our team will reach out within one business day.</p>
+    <div class="contact-list">
+      <div class="contact-row"><span class="icon">📞</span>(816) 737-1110</div>
+      <div class="contact-row"><span class="icon">📍</span>9500 E 63rd St, Suite 103, Raytown, MO 64133</div>
+      <div class="contact-row"><span class="icon">🕐</span>Mon–Thu: 7:30 AM – 6:30 PM · Fri: 7:30 AM – 1:00 PM</div>
+      <div class="contact-row"><span class="icon">✉️</span>ins@personalcaredental.com</div>
+    </div>
+  </div>
+  <div class="appt-form">
+    <div class="form-title">Request an Appointment</div>
+    <div class="form-2col">
+      <div class="form-row"><label>First Name</label><input type="text" placeholder="Jane"></div>
+      <div class="form-row"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+    </div>
+    <div class="form-row"><label>Phone Number</label><input type="tel" placeholder="(816) 555-0100"></div>
+    <div class="form-row"><label>Email Address</label><input type="email" placeholder="jane@email.com"></div>
+    <div class="form-row">
+      <label>Service Needed</label>
+      <select>
+        <option>General Cleaning / Exam</option>
+        <option>Cosmetic Consultation</option>
+        <option>Invisalign Consultation</option>
+        <option>Dental Implants</option>
+        <option>Pediatric Visit</option>
+        <option>Sleep Apnea</option>
+        <option>Emergency</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <label>New or Existing Patient?</label>
+      <select><option>New Patient</option><option>Existing Patient</option></select>
+    </div>
+    <div class="form-row"><label>Additional Notes</label><textarea placeholder="Insurance provider, preferred days/times, or any questions..."></textarea></div>
+    <button class="btn-fill" style="width:100%;padding:16px;font-size:13px;border-radius:100px;border:none;cursor:pointer;">Submit Request</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Personal Care Dental<span>Group · Raytown, Missouri</span></div>
+      <p>A privately owned, multi-doctor practice serving Raytown and the greater Kansas City metro since 1980. Accepting patients of all ages.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="#">General Dentistry</a></li>
+        <li><a href="#">Pediatric Care</a></li>
+        <li><a href="#">Cosmetic Dentistry</a></li>
+        <li><a href="#">Invisalign®</a></li>
+        <li><a href="#">Dental Implants</a></li>
+        <li><a href="#">Sleep Apnea</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Practice</h4>
+      <ul>
+        <li><a href="#">Meet Our Doctors</a></li>
+        <li><a href="#">About Us</a></li>
+        <li><a href="#">Patient Forms</a></li>
+        <li><a href="#">Insurance & Billing</a></li>
+        <li><a href="#">Accessibility</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="#">(816) 737-1110</a></li>
+        <li><a href="#">ins@personalcaredental.com</a></li>
+        <li><a href="#">9500 E 63rd St #103</a></li>
+        <li><a href="#">Raytown, MO 64133</a></li>
+        <li><a href="#">Get Directions</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Personal Care Dental Group, LLC. All rights reserved.</span>
+    <span><a href="#">Privacy Policy</a> · <a href="#">Accessibility</a></span>
+  </div>
+</footer>
+
+<!-- MOBILE BAR -->
+<div class="mobile-bar">
+  <div class="mobile-bar-inner">
+    <a href="tel:8167371110">📞 Call Us</a>
+    <a href="#appointment" class="filled">📅 Book Now</a>
+  </div>
+</div>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById('mobileMenu');
+    const btn = document.getElementById('hamburger');
+    menu.classList.toggle('open');
+    btn.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  }
+</script>
+
+</body>
+</html>

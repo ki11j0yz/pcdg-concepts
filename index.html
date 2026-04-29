@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PCDG | Website Design Concepts</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@400;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --pcdg-blue: #2e9fd4;
+            --pcdg-blue-dark: #1a6e9a;
+            --pcdg-blue-light: #7dd4f5;
+            --deep: #070e1a;
+            --deep-2: #0d1a2e;
+            --surface: rgba(255, 255, 255, 0.04);
+            --border: rgba(46, 159, 212, 0.2);
+            --text: #e8f4fb;
+            --text-muted: rgba(232, 244, 251, 0.55);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--deep);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Subtle grid background */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(46, 159, 212, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(46, 159, 212, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient glow */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 500px;
+            background: radial-gradient(ellipse, rgba(46, 159, 212, 0.12) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .page-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 60px 30px 100px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 70px;
+            animation: fadeDown 0.8s ease both;
+        }
+
+        .logo-wrap {
+            display: inline-flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 30px;
+            padding: 0px 30px;
+            background: rgba(46, 159, 212, 0.07);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo-wrap img {
+            height: 120px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(46, 159, 212, 0.4)) brightness(0) invert(1);
+        }
+
+        .logo-wrap span {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.8rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--pcdg-blue-light);
+        }
+
+        .headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(2.8rem, 6vw, 4.5rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.01em;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .headline em {
+            font-style: italic;
+            color: var(--pcdg-blue-light);
+        }
+
+        .subhead {
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+        }
+
+        .tagline {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        /* Divider */
+        .divider {
+            width: 60px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--pcdg-blue), transparent);
+            margin: 28px auto;
+        }
+
+        /* Instruction bar */
+        .instruction {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: rgba(46, 159, 212, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            padding: 10px 22px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--pcdg-blue-light);
+            margin-top: 10px;
+        }
+
+        .instruction::before {
+            content: '→';
+            font-size: 1rem;
+        }
+
+        /* Concepts grid */
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .concept-card {
+            position: relative;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 36px 32px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .concept-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .concept-card:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .concept-card:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .concept-card:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .concept-card:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        /* Hover glow effect */
+        .concept-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at top left, rgba(46, 159, 212, 0.12) 0%, transparent 60%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            border-radius: 20px;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(46, 159, 212, 0.5);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(46, 159, 212, 0.2);
+        }
+
+        .concept-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-number {
+            font-size: 0.65rem;
+            font-weight: 800;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--pcdg-blue);
+            opacity: 0.7;
+        }
+
+        .card-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            line-height: 1;
+            color: var(--text);
+            transition: color 0.3s ease;
+        }
+
+        .concept-card:hover .card-title {
+            color: var(--pcdg-blue-light);
+        }
+
+        .card-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+            flex-grow: 1;
+        }
+
+        .card-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--pcdg-blue);
+            margin-top: 8px;
+            transition: gap 0.3s ease, color 0.3s ease;
+        }
+
+        .concept-card:hover .card-cta {
+            gap: 14px;
+            color: var(--pcdg-blue-light);
+        }
+
+        .card-cta::after {
+            content: '→';
+            font-size: 1rem;
+        }
+
+        /* Color accent bar at top of each card */
+        .card-accent {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 20px 20px 0 0;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .concept-card:hover .card-accent {
+            opacity: 1;
+        }
+
+        .accent-editorial {
+            background: linear-gradient(90deg, #2e9fd4, #7dd4f5);
+        }
+
+        .accent-inspired {
+            background: linear-gradient(90deg, #5bb89e, #a8e6d4);
+        }
+
+        .accent-classic {
+            background: linear-gradient(90deg, #c9a96e, #e8d4a8);
+        }
+
+        .accent-modern {
+            background: linear-gradient(90deg, #2e9fd4, #1a6e9a);
+        }
+
+        .accent-navygold {
+            background: linear-gradient(90deg, #002d56, #ffcd00);
+        }
+
+        /* Footer */
+        .presentation-footer {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            animation: fadeUp 0.6s ease 0.7s both;
+        }
+
+        .presentation-footer p {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            letter-spacing: 0.08em;
+            line-height: 2;
+        }
+
+        .presentation-footer strong {
+            color: var(--pcdg-blue-light);
+        }
+
+        /* Animations */
+        @keyframes fadeDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .page-wrapper {
+                padding: 40px 20px 80px;
+            }
+
+            header {
+                margin-bottom: 50px;
+            }
+
+            .logo-wrap {
+                padding: 12px 20px;
+                gap: 12px;
+            }
+
+            .logo-wrap img {
+                height: 36px;
+            }
+
+            .concepts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+
+        <header>
+            <div class="logo-wrap">
+                <img src="images/PCDG_Logo_No_Background.png" alt="Personal Care Dental Group">
+                <span>Personal Care Dental Group LLC</span>
+            </div>
+            <p class="subhead">Website Design Presentation</p>
+            <h1 class="headline">Five <em>Concepts.</em><br>One Vision.</h1>
+            <div class="divider"></div>
+            <p class="tagline">Where Smiles Make Smiles</p>
+            <div class="instruction">Select a concept below to explore</div>
+        </header>
+
+        <div class="concepts-grid">
+
+            <a href="editorial/index.html" class="concept-card">
+                <div class="card-accent accent-editorial"></div>
+                <span class="card-number">Concept 01</span>
+                <h2 class="card-title">Editorial</h2>
+                <p class="card-desc">A bold, magazine-inspired layout with strong typography and a modern journalistic
+                    feel. Clean, confident, authoritative.</p>
+                <span class="card-cta">View Concept</span>
+            </a>
+
+            <a href="inspired/index.html" class="concept-card">
+                <div class="card-accent accent-inspired"></div>
+                <span class="card-number">Concept 02</span>
+                <h2 class="card-title">Inspired</h2>
+                <p class="card-desc">Warm, welcoming, and fresh. A design that feels approachable and human — perfect
+                    for a practice built on personal relationships.</p>
+                <span class="card-cta">View Concept</span>
+            </a>
+
+            <a href="classic/index.html" class="concept-card">
+                <div class="card-accent accent-classic"></div>
+                <span class="card-number">Concept 03</span>
+                <h2 class="card-title">Classic</h2>
+                <p class="card-desc">Timeless and refined. Elegant typography and a restrained palette that communicates
+                    trust, heritage, and professional excellence.</p>
+                <span class="card-cta">View Concept</span>
+            </a>
+
+            <a href="modern/index.html" class="concept-card">
+                <div class="card-accent accent-modern"></div>
+                <span class="card-number">Concept 04</span>
+                <h2 class="card-title">Modern</h2>
+                <p class="card-desc">Crisp, contemporary, and forward-thinking. Clean lines and bold structure that
+                    signal a practice at the forefront of dental care.</p>
+                <span class="card-cta">View Concept</span>
+            </a>
+
+            <a href="navygold/index.html" class="concept-card">
+                <div class="card-accent accent-navygold"></div>
+                <span class="card-number">Concept 05</span>
+                <h2 class="card-title">Navy & Gold</h2>
+                <p class="card-desc">Upscale and distinguished. A rich navy and gold palette that elevates the practice
+                    into premium territory — luxury dental care.</p>
+                <span class="card-cta">View Concept</span>
+            </a>
+
+        </div>
+
+        <div class="presentation-footer">
+            <p>Prepared exclusively for <strong>Personal Care Dental Group LLC</strong> · Raytown, MO</p>
+            <p>Designed by <strong>JKP Dev Labs</strong> · All concepts are original works</p>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
