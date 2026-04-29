@@ -828,11 +828,12 @@
     }
 
     /* Staggered card layout */
-    .doc-cards {
+.doc-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
       position: relative;
+      align-items: start;
     }
 
     .doc-card {
@@ -840,22 +841,26 @@
       border: 1px solid rgba(255, 255, 255, .1);
       border-radius: 4px;
       overflow: hidden;
-      transition: transform .4s cubic-bezier(.22, .68, 0, 1.2), background .3s;
+      transition: transform .4s cubic-bezier(.22, .68, 0, 1.2), background .3s, box-shadow .4s;
       position: relative;
+      height: 420px;
+      display: flex;
+      flex-direction: column;
     }
 
-    /* Stagger cards vertically */
     .doc-card:nth-child(2) {
-      margin-top: 40px;
+      margin-top: 0;
     }
 
     .doc-card:nth-child(3) {
-      margin-top: 80px;
+      margin-top: 0;
     }
 
     .doc-card:hover {
-      transform: translateY(-12px);
-      background: rgba(255, 255, 255, .1);
+      transform: translateY(-16px) scale(1.03);
+      background: rgba(255, 255, 255, .12);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+      z-index: 10;
     }
 
     /* Color top accent per card */
