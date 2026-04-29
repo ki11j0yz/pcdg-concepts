@@ -885,8 +885,9 @@
       height: 4px;
     }
 
-    .doc-photo {
+.doc-photo {
       height: 260px;
+      flex-shrink: 0;
       background: linear-gradient(160deg, rgba(255, 255, 255, .05) 0%, rgba(255, 255, 255, .12) 100%);
       display: flex;
       align-items: center;
@@ -897,6 +898,33 @@
       font-size: 12px;
       letter-spacing: .08em;
       text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Hover blurb overlay */
+    .doc-photo::after {
+      content: attr(data-blurb);
+      position: absolute;
+      inset: 0;
+      background: rgba(45, 122, 110, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 15px;
+      line-height: 1.6;
+      color: var(--cream);
+      text-transform: none;
+      letter-spacing: 0;
+      opacity: 0;
+      transition: opacity .4s ease;
+    }
+
+    .doc-card:hover .doc-photo::after {
+      opacity: 1;
     }
 
     .doc-photo svg {
