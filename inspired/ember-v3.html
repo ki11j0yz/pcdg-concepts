@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal Care Dental Group · Raytown, MO</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+
+    /* ════════════════════════════════════════
+       EMBER — Personal Care Dental Group
+       Cinematic · Luxury · Personal
+    ════════════════════════════════════════ */
+    :root {
+      --bb:      #0C252D;
+      --bb2:     #091C22;
+      --bb3:     #061318;
+      --amber:   #A97045;
+      --amlt:    #C4956A;
+      --amdk:    #7A5030;
+      --sand:    #BAA484;
+      --sandlt:  #D4C4A8;
+      --milk:    #F9F7F0;
+      --milkdk:  #EDE8DC;
+      --ink:     #060E11;
+      --stone:   #6A6155;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background: var(--bb3);
+      color: var(--milk);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── CURSOR ── */
+    #cur {
+      position: fixed; z-index: 9999; pointer-events: none;
+      width: 8px; height: 8px; border-radius: 50%;
+      background: var(--amber);
+      transform: translate(-50%,-50%);
+      transition: width .25s, height .25s, opacity .25s;
+    }
+
+    #cur-ring {
+      position: fixed; z-index: 9998; pointer-events: none;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: 1px solid rgba(169,112,69,0.45);
+      transform: translate(-50%,-50%);
+      transition: all .5s cubic-bezier(.16,1,.3,1);
+    }
+
+    body.hovering #cur { width: 4px; height: 4px; }
+    body.hovering #cur-ring { width: 52px; height: 52px; border-color: var(--amlt); }
+
+    /* ── PROGRESS BAR ── */
+    #prog {
+      position: fixed; top: 0; left: 0; height: 1px; z-index: 3000;
+      background: var(--amber); width: 0; transition: width .1s linear;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 56px;
+      mix-blend-mode: normal;
+    }
+
+    nav::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(6,19,24,0.7) 0%, transparent 100%);
+      pointer-events: none;
+    }
+
+    .nav-brand {
+      position: relative; z-index: 1;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 600; letter-spacing: .12em;
+      color: var(--milk); text-decoration: none; text-transform: uppercase;
+    }
+
+    .nav-links {
+      position: relative; z-index: 1;
+      display: flex; gap: 36px; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: .65rem; font-weight: 400; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(249,247,240,0.5);
+      text-decoration: none; transition: color .3s ease; cursor: none;
+    }
+
+    .nav-links a:hover { color: var(--amlt); }
+
+    .nav-cta {
+      position: relative; z-index: 1;
+      font-size: .6rem; font-weight: 500; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--ink);
+      text-decoration: none; cursor: none;
+      background: var(--amber);
+      padding: 10px 22px;
+      transition: all .3s ease;
+    }
+
+    .nav-cta:hover { background: var(--amlt); }
+
+    /* ════════════════════════════════════════
+       SECTION 01 — HERO
+       Full bleed, split reveal
+    ════════════════════════════════════════ */
+    .s-hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+    }
+
+    .hero-left {
+      background: var(--bb3);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 120px 56px 80px;
+      position: relative; overflow: hidden;
+    }
+
+    /* Dot grid texture */
+    .hero-left::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(169,112,69,0.07) 1px, transparent 1px);
+      background-size: 28px 28px;
+      pointer-events: none;
+    }
+
+    /* Amber vertical accent line */
+    .hero-left::after {
+      content: '';
+      position: absolute; right: 0; top: 15%; bottom: 15%;
+      width: 1px;
+      background: linear-gradient(180deg, transparent 0%, var(--amber) 30%, var(--amber) 70%, transparent 100%);
+      opacity: .3;
+    }
+
+    .hero-eyebrow {
+      font-size: .6rem; font-weight: 400; letter-spacing: .35em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 28px; position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 16px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 32px; height: 1px; background: var(--amber); display: block;
+    }
+
+    .hero-h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(64px, 8vw, 130px);
+      font-weight: 300; line-height: .88;
+      color: var(--milk); letter-spacing: -.02em;
+      margin-bottom: 40px; position: relative; z-index: 1;
+    }
+
+    .hero-h1 em {
+      font-style: italic; font-weight: 300;
+      color: var(--amlt); display: block;
+    }
+
+    .hero-h1 strong {
+      font-weight: 700; display: block;
+      -webkit-text-stroke: 1px var(--amber);
+      color: transparent;
+    }
+
+    .hero-sub {
+      font-size: .8rem; font-weight: 300; line-height: 1.9;
+      color: rgba(249,247,240,0.38); max-width: 340px;
+      margin-bottom: 48px; position: relative; z-index: 1;
+      letter-spacing: .04em;
+    }
+
+    .hero-actions {
+      display: flex; gap: 16px; align-items: center;
+      position: relative; z-index: 1;
+    }
+
+    .btn-fill {
+      font-size: .6rem; font-weight: 500; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--ink);
+      text-decoration: none; cursor: none;
+      background: var(--amber);
+      padding: 14px 32px;
+      transition: all .35s ease;
+      position: relative; overflow: hidden;
+    }
+
+    .btn-fill::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--amlt);
+      transform: translateX(-101%);
+      transition: transform .35s ease;
+    }
+
+    .btn-fill:hover::before { transform: translateX(0); }
+    .btn-fill span { position: relative; z-index: 1; }
+
+    .btn-line {
+      font-size: .6rem; font-weight: 400; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(249,247,240,0.5);
+      text-decoration: none; cursor: none;
+      border-bottom: 1px solid rgba(169,112,69,0.3);
+      padding-bottom: 2px;
+      transition: all .3s ease;
+    }
+
+    .btn-line:hover { color: var(--amlt); border-color: var(--amlt); }
+
+    /* Hero right — full bleed image area */
+    .hero-right {
+      position: relative; overflow: hidden;
+      background: linear-gradient(160deg, #1A3A42 0%, #0C252D 100%);
+    }
+
+    .hero-right-inner {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px;
+    }
+
+    .hero-img-placeholder {
+      width: 100%; height: 100%;
+      background: linear-gradient(160deg, rgba(169,112,69,0.06) 0%, rgba(12,37,45,0.8) 100%);
+      display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
+    }
+
+    .hero-img-label {
+      font-size: .55rem; letter-spacing: .35em; text-transform: uppercase;
+      color: rgba(169,112,69,0.3);
+    }
+
+    /* Floating stat cards */
+    .hero-stats {
+      position: absolute; left: -28px; bottom: 80px;
+      display: flex; flex-direction: column; gap: 12px; z-index: 2;
+    }
+
+    .stat-card {
+      background: rgba(6,19,24,0.92);
+      border: 1px solid rgba(169,112,69,0.2);
+      backdrop-filter: blur(12px);
+      padding: 16px 20px;
+      animation: floatUp 6s ease-in-out infinite;
+    }
+
+    .stat-card:nth-child(2) { animation-delay: 2s; margin-left: 20px; }
+    .stat-card:nth-child(3) { animation-delay: 4s; }
+
+    @keyframes floatUp {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .stat-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem; font-weight: 700; color: var(--amlt);
+      line-height: 1;
+    }
+
+    .stat-lbl {
+      font-size: .55rem; letter-spacing: .22em; text-transform: uppercase;
+      color: rgba(186,164,132,0.45); margin-top: 4px;
+    }
+
+    /* Amber corner accent */
+    .hero-corner {
+      position: absolute; bottom: 0; right: 0;
+      width: 120px; height: 120px;
+      background: var(--amber);
+      clip-path: polygon(100% 0, 100% 100%, 0 100%);
+      opacity: .15;
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 02 — MARQUEE
+    ════════════════════════════════════════ */
+    .s-marquee {
+      background: var(--amber);
+      padding: 14px 0; overflow: hidden;
+      border-top: 1px solid rgba(122,80,48,0.4);
+      border-bottom: 1px solid rgba(122,80,48,0.4);
+    }
+
+    .m-track { display: flex; white-space: nowrap; animation: mscroll 45s linear infinite; }
+    .s-marquee:hover .m-track { animation-play-state: paused; }
+
+    .m-item {
+      font-size: .6rem; font-weight: 400; letter-spacing: .3em;
+      text-transform: uppercase; color: rgba(6,14,17,0.7);
+      padding: 0 32px; flex-shrink: 0;
+    }
+
+    .m-sep { color: rgba(6,14,17,0.3); padding: 0 4px; font-size: .5rem; }
+
+    @keyframes mscroll { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+    /* ════════════════════════════════════════
+       SECTION 03 — ABOUT
+       Full bleed editorial
+    ════════════════════════════════════════ */
+    .s-about {
+      min-height: 100vh;
+      display: grid; grid-template-columns: 1fr 1fr;
+      background: var(--milk);
+      color: var(--bb);
+    }
+
+    .about-left {
+      background: var(--milkdk);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 64px; position: relative; overflow: hidden;
+    }
+
+    /* Large decorative year */
+    .about-year-bg {
+      position: absolute;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 280px; font-weight: 700; line-height: 1;
+      color: rgba(169,112,69,0.08);
+      letter-spacing: -.05em;
+      bottom: -40px; left: -20px;
+      pointer-events: none; user-select: none;
+    }
+
+    .about-left-content { position: relative; z-index: 1; }
+
+    .about-eyebrow {
+      font-size: .6rem; font-weight: 400; letter-spacing: .35em;
+      text-transform: uppercase; color: var(--amber);
+      margin-bottom: 24px; display: flex; align-items: center; gap: 14px;
+    }
+
+    .about-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--amber); display: block; }
+
+    .about-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5vw, 80px);
+      font-weight: 300; line-height: 1.0;
+      color: var(--bb); letter-spacing: -.02em;
+      margin-bottom: 32px;
+    }
+
+    .about-h2 em { font-style: italic; color: var(--amdk); }
+
+    .about-pull {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem; font-style: italic; font-weight: 300;
+      line-height: 1.7; color: var(--stone);
+      border-left: 2px solid var(--amber);
+      padding-left: 20px; margin-bottom: 32px;
+    }
+
+    .about-body {
+      font-size: .8rem; font-weight: 300; line-height: 1.95;
+      color: var(--stone); letter-spacing: .02em;
+    }
+
+    .about-facts {
+      display: flex; gap: 40px; margin-top: 40px;
+      padding-top: 32px; border-top: 1px solid rgba(106,97,85,0.2);
+    }
+
+    .fact-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem; font-weight: 700; color: var(--amdk); line-height: 1;
+    }
+
+    .fact-lbl {
+      font-size: .55rem; letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(106,97,85,0.6); margin-top: 4px;
+    }
+
+    .about-right {
+      background: var(--bb);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 64px; position: relative; overflow: hidden;
+    }
+
+    .about-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(169,112,69,0.06) 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+
+    .about-right-quote {
+      position: relative; z-index: 1; text-align: center;
+    }
+
+    .about-big-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8rem; font-weight: 700; line-height: .8;
+      color: var(--amber); opacity: .2; display: block; margin-bottom: -20px;
+    }
+
+    .about-quote-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+      font-weight: 300; font-style: italic;
+      line-height: 1.5; color: var(--milk);
+    }
+
+    .about-quote-attr {
+      font-size: .6rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--amber); margin-top: 24px; display: block;
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 04 — SERVICES
+       Full-width editorial list
+    ════════════════════════════════════════ */
+    .s-services {
+      background: var(--bb3);
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .svc-header {
+      padding: 0 80px 64px;
+      display: flex; justify-content: space-between; align-items: flex-end;
+      border-bottom: 1px solid rgba(169,112,69,0.1);
+    }
+
+    .svc-eyebrow {
+      font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 14px;
+    }
+
+    .svc-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--amber); display: block; }
+
+    .svc-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(40px, 5.5vw, 88px);
+      font-weight: 300; line-height: .9;
+      color: var(--milk); letter-spacing: -.02em;
+    }
+
+    .svc-h2 em { font-style: italic; color: var(--amlt); }
+
+    .svc-count {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 5rem; font-weight: 300;
+      color: rgba(169,112,69,0.15); line-height: 1;
+    }
+
+    /* Service rows — hover floods background */
+    .svc-row {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      padding: 36px 80px;
+      border-bottom: 1px solid rgba(169,112,69,0.06);
+      cursor: none;
+      position: relative;
+      transition: background .5s ease;
+      overflow: hidden;
+    }
+
+    .svc-row::before {
+      content: '';
+      position: absolute; left: 0; top: 0; bottom: 0;
+      width: 0;
+      background: linear-gradient(135deg, var(--amber), var(--amdk));
+      transition: width .5s cubic-bezier(.16,1,.3,1);
+    }
+
+    .svc-row:hover::before { width: 3px; }
+    .svc-row:hover { background: rgba(169,112,69,0.04); }
+    .svc-row:hover .svc-num { opacity: .12; color: var(--amlt); }
+    .svc-row:hover .svc-name { color: var(--amlt); transform: translateX(8px); }
+    .svc-row:hover .svc-arrow { opacity: 1; transform: translateX(0); }
+
+    .svc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 4rem; font-weight: 700;
+      color: rgba(249,247,240,0.04);
+      line-height: 1; transition: all .4s ease;
+      position: relative; z-index: 1;
+    }
+
+    .svc-body { position: relative; z-index: 1; }
+
+    .svc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.4rem, 2.5vw, 2.4rem);
+      font-weight: 600; color: var(--milk);
+      transition: color .4s ease, transform .4s ease;
+      letter-spacing: -.01em;
+    }
+
+    .svc-desc {
+      font-size: .72rem; font-weight: 300; line-height: 1.7;
+      color: rgba(249,247,240,0.28); margin-top: 6px; letter-spacing: .03em;
+    }
+
+    .svc-icon { font-size: 1.2rem; margin-right: 16px; opacity: .7; }
+
+    .svc-namerow { display: flex; align-items: center; }
+
+    .svc-arrow {
+      font-size: .65rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--amlt); opacity: 0; transform: translateX(-12px);
+      transition: all .4s ease; position: relative; z-index: 1;
+      text-decoration: none; cursor: none;
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 05 — DOCTORS
+       Full bleed stacked
+    ════════════════════════════════════════ */
+    .s-doctors { background: var(--bb2); padding: 100px 80px; }
+
+    .doc-header { margin-bottom: 72px; }
+
+    .doc-eyebrow {
+      font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 16px;
+      display: flex; align-items: center; gap: 14px;
+    }
+
+    .doc-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--amber); display: block; }
+
+    .doc-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4.5vw, 72px);
+      font-weight: 300; line-height: .95;
+      color: var(--milk); letter-spacing: -.02em;
+    }
+
+    .doc-h2 em { font-style: italic; color: var(--amlt); }
+
+    .doc-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+
+    .doc-card {
+      position: relative; overflow: hidden;
+      background: var(--bb3);
+      cursor: none;
+      aspect-ratio: 3/4;
+      display: flex; flex-direction: column;
+      transition: all .5s ease;
+      border: 1px solid rgba(169,112,69,0.08);
+    }
+
+    .doc-card:hover { border-color: rgba(169,112,69,0.25); }
+
+    .doc-photo-area {
+      flex: 1;
+      background: linear-gradient(160deg, rgba(169,112,69,0.05) 0%, rgba(6,13,18,0.6) 100%);
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+
+    /* Amber reveal on hover */
+    .doc-photo-area::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(169,112,69,0.15), transparent);
+      opacity: 0; transition: opacity .5s ease;
+    }
+
+    .doc-card:hover .doc-photo-area::before { opacity: 1; }
+
+    .doc-placeholder {
+      font-size: .55rem; letter-spacing: .25em; text-transform: uppercase;
+      color: rgba(169,112,69,0.2);
+    }
+
+    /* Blurb overlay */
+    .doc-blurb {
+      position: absolute; inset: 0;
+      background: rgba(122,80,48,0.94);
+      display: flex; align-items: center; justify-content: center;
+      padding: 32px;
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 1.05rem; line-height: 1.65;
+      color: var(--milk); text-align: center;
+      opacity: 0; transition: opacity .4s ease;
+    }
+
+    .doc-card:hover .doc-blurb { opacity: 1; }
+
+    .doc-info {
+      padding: 24px 28px;
+      border-top: 1px solid rgba(169,112,69,0.12);
+    }
+
+    .doc-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem; font-weight: 600; color: var(--milk);
+      letter-spacing: -.01em; margin-bottom: 4px;
+    }
+
+    .doc-cred {
+      font-size: .55rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--amlt);
+    }
+
+    .doc-spec {
+      font-size: .7rem; font-weight: 300; color: rgba(249,247,240,0.3);
+      line-height: 1.65; margin-top: 10px; letter-spacing: .02em;
+    }
+
+    .doc-bar {
+      width: 20px; height: 1px; background: var(--amber); margin: 12px 0;
+    }
+
+    /* ════════════════════════════════════════
+       SECTION 06 — TESTIMONIALS
+       Cinematic full bleed
+    ════════════════════════════════════════ */
+    .s-testi {
+      min-height: 80vh;
+      background: linear-gradient(135deg, var(--amber) 0%, var(--amdk) 50%, var(--bb3) 100%);
+      display: flex; align-items: center; justify-content: center;
+      padding: 100px 80px; position: relative; overflow: hidden;
+    }
+
+    .s-testi::before {
+      content: '"';
+      position: absolute; top: -60px; left: 40px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 500px; font-weight: 700; line-height: 1;
+      color: rgba(249,247,240,0.04); pointer-events: none;
+    }
+
+    .testi-inner {
+      max-width: 1100px; width: 100%;
+      display: grid; grid-template-columns: 1.4fr 1fr; gap: 80px; align-items: end;
+    }
+
+    .testi-main-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.6rem, 3vw, 3rem);
+      font-weight: 300; font-style: italic;
+      line-height: 1.35; color: var(--milk); position: relative; z-index: 1;
+    }
+
+    .testi-stars { font-size: 1rem; letter-spacing: 4px; color: var(--sandlt); margin-bottom: 20px; }
+    .testi-attr { font-size: .6rem; letter-spacing: .25em; text-transform: uppercase; color: rgba(249,247,240,0.55); margin-top: 24px; }
+
+    .testi-side { display: flex; flex-direction: column; gap: 16px; }
+
+    .testi-card {
+      background: rgba(6,19,24,0.5);
+      border: 1px solid rgba(249,247,240,0.08);
+      backdrop-filter: blur(8px);
+      padding: 22px; cursor: none;
+      transition: all .3s ease;
+    }
+
+    .testi-card:hover { background: rgba(6,19,24,0.7); border-color: rgba(249,247,240,0.15); }
+
+    .tc-stars { font-size: .7rem; letter-spacing: 3px; color: var(--sandlt); margin-bottom: 10px; }
+
+    .tc-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem; font-style: italic;
+      color: rgba(249,247,240,0.75); line-height: 1.65; margin-bottom: 10px;
+    }
+
+    .tc-attr { font-size: .55rem; letter-spacing: .18em; text-transform: uppercase; color: rgba(249,247,240,0.4); }
+
+    /* ════════════════════════════════════════
+       SECTION 07 — TRUST STRIP
+    ════════════════════════════════════════ */
+    .s-trust {
+      background: var(--bb);
+      border-top: 1px solid rgba(169,112,69,0.12);
+      border-bottom: 1px solid rgba(169,112,69,0.12);
+      padding: 32px 80px;
+      display: flex; align-items: center; justify-content: space-around; flex-wrap: wrap; gap: 20px;
+    }
+
+    .t-item { display: flex; align-items: center; gap: 14px; }
+    .t-ico { font-size: 1.1rem; }
+    .t-txt strong { display: block; font-size: .8rem; color: var(--sand); font-weight: 500; letter-spacing: .04em; }
+    .t-txt span { font-size: .65rem; color: rgba(186,164,132,0.4); letter-spacing: .08em; }
+    .t-div { width: 1px; height: 28px; background: rgba(169,112,69,0.15); }
+
+    /* ════════════════════════════════════════
+       SECTION 08 — CONTACT
+       Split screen, full bleed
+    ════════════════════════════════════════ */
+    .s-contact {
+      display: grid; grid-template-columns: 1fr 1fr;
+      min-height: 100vh;
+    }
+
+    .contact-left {
+      background: var(--milkdk);
+      padding: 100px 64px 80px;
+      display: flex; flex-direction: column; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+
+    .contact-left::before {
+      content: '';
+      position: absolute; bottom: -60px; left: -60px;
+      width: 300px; height: 300px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(169,112,69,0.08) 0%, transparent 70%);
+    }
+
+    .contact-eyebrow {
+      font-size: .6rem; letter-spacing: .35em; text-transform: uppercase;
+      color: var(--amdk); margin-bottom: 24px;
+      display: flex; align-items: center; gap: 14px; position: relative; z-index: 1;
+    }
+
+    .contact-eyebrow::before { content: ''; width: 28px; height: 1px; background: var(--amber); display: block; }
+
+    .contact-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 4vw, 64px);
+      font-weight: 300; line-height: .95;
+      color: var(--bb); letter-spacing: -.02em;
+      margin-bottom: 24px; position: relative; z-index: 1;
+    }
+
+    .contact-h2 em { font-style: italic; color: var(--amdk); }
+
+    .contact-sub {
+      font-size: .78rem; font-weight: 300; line-height: 1.9;
+      color: var(--stone); margin-bottom: 44px; letter-spacing: .02em;
+      position: relative; z-index: 1;
+    }
+
+    .contact-info { position: relative; z-index: 1; }
+
+    .c-row {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 0; border-bottom: 1px solid rgba(106,97,85,0.15);
+      font-size: .78rem; color: var(--stone); letter-spacing: .02em;
+    }
+
+    .c-ico { font-size: .8rem; color: var(--amber); margin-top: 2px; flex-shrink: 0; }
+
+    .contact-right {
+      background: var(--bb3);
+      padding: 80px;
+      display: flex; align-items: center;
+      border-left: 1px solid rgba(169,112,69,0.1);
+      position: relative;
+    }
+
+    .contact-right::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(169,112,69,0.05) 1px, transparent 1px);
+      background-size: 24px 24px;
+      pointer-events: none;
+    }
+
+    .form-wrap { width: 100%; position: relative; z-index: 1; }
+
+    .form-ttl {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-weight: 600; color: var(--milk);
+      margin-bottom: 32px; letter-spacing: -.01em;
+    }
+
+    .form-row { margin-bottom: 16px; }
+
+    .form-row label {
+      display: block; font-size: .55rem; letter-spacing: .22em;
+      text-transform: uppercase; color: rgba(169,112,69,0.45);
+      margin-bottom: 6px;
+    }
+
+    .form-row input, .form-row select, .form-row textarea {
+      width: 100%; padding: 11px 14px;
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(169,112,69,0.15);
+      color: var(--milk);
+      font-family: 'Jost', sans-serif; font-size: .8rem; font-weight: 300;
+      outline: none; transition: border-color .25s; cursor: auto;
+    }
+
+    .form-row input::placeholder { color: rgba(249,247,240,0.12); }
+    .form-row input:focus, .form-row select:focus, .form-row textarea:focus { border-color: var(--amber); }
+    .form-row select option { background: var(--bb3); }
+    .form-row textarea { height: 90px; resize: vertical; }
+    .form-2c { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+    .btn-submit {
+      background: var(--amber); color: var(--ink);
+      padding: 14px; width: 100%; border: none;
+      font-family: 'Jost', sans-serif; font-size: .6rem;
+      letter-spacing: .22em; text-transform: uppercase; font-weight: 500;
+      cursor: none; transition: all .35s ease;
+      position: relative; overflow: hidden;
+    }
+
+    .btn-submit::before {
+      content: ''; position: absolute; inset: 0;
+      background: var(--amlt); transform: translateX(-101%);
+      transition: transform .35s ease;
+    }
+
+    .btn-submit:hover::before { transform: translateX(0); }
+    .btn-submit span { position: relative; z-index: 1; }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    footer {
+      background: var(--ink);
+      padding: 72px 80px 40px;
+      border-top: 1px solid rgba(169,112,69,0.1);
+    }
+
+    .footer-top {
+      display: grid; grid-template-columns: 1.8fr 1fr 1fr 1fr; gap: 48px;
+      margin-bottom: 48px; padding-bottom: 48px;
+      border-bottom: 1px solid rgba(169,112,69,0.06);
+    }
+
+    .f-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem; font-weight: 600; color: var(--milk);
+      margin-bottom: 12px; letter-spacing: -.01em;
+    }
+
+    .f-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: .8rem;
+      color: var(--amber); letter-spacing: .04em; margin-bottom: 16px;
+    }
+
+    footer p { font-size: .72rem; line-height: 1.85; color: rgba(186,164,132,0.3); font-weight: 300; }
+
+    .f-col h4 {
+      font-size: .55rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 16px; opacity: .7;
+    }
+
+    .f-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .f-col ul a { color: rgba(186,164,132,0.3); text-decoration: none; font-size: .72rem; transition: color .2s; font-weight: 300; cursor: none; }
+    .f-col ul a:hover { color: var(--amlt); }
+
+    .footer-bot {
+      display: flex; justify-content: space-between;
+      font-size: .58rem; letter-spacing: .12em; color: rgba(186,164,132,0.2);
+    }
+
+    .footer-bot a { color: rgba(186,164,132,0.2); text-decoration: none; }
+
+    /* ── BACK TO TOP ── */
+    #btt {
+      position: fixed; bottom: 32px; right: 32px; z-index: 500;
+      width: 40px; height: 40px;
+      background: var(--amber); color: var(--ink);
+      border: none; cursor: none; display: flex;
+      align-items: center; justify-content: center; font-size: .9rem;
+      opacity: 0; transform: translateY(16px);
+      transition: opacity .3s, transform .3s;
+    }
+
+    #btt.show { opacity: 1; transform: translateY(0); }
+    #btt:hover { background: var(--amlt); }
+
+    /* ── REVEAL SYSTEM ── */
+    .rv { opacity: 0; transform: translateY(36px); transition: opacity 1s ease, transform 1s ease; }
+    .rv.go { opacity: 1; transform: translateY(0); }
+    .rv-l { opacity: 0; transform: translateX(-48px); transition: opacity 1s ease, transform 1s ease; }
+    .rv-l.go { opacity: 1; transform: translateX(0); }
+    .rv-r { opacity: 0; transform: translateX(48px); transition: opacity 1s ease, transform 1s ease; }
+    .rv-r.go { opacity: 1; transform: translateX(0); }
+    .d1{transition-delay:.15s!important} .d2{transition-delay:.3s!important} .d3{transition-delay:.45s!important}
+    .d4{transition-delay:.6s!important} .d5{transition-delay:.75s!important}
+
+    /* ── MOBILE NAV ── */
+    .mob-nav {
+      display: none; position: fixed; top: 0; left: 0; right: 0; z-index: 600;
+      background: rgba(6,14,17,0.95);
+      border-bottom: 1px solid rgba(169,112,69,0.15);
+      padding: 18px 24px; align-items: center; justify-content: space-between;
+      backdrop-filter: blur(12px);
+    }
+
+    .mob-brand {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: .95rem; font-weight: 600; color: var(--milk); letter-spacing: .08em;
+    }
+
+    .mob-ham { background: none; border: none; cursor: pointer; padding: 4px; }
+    .mob-ham span { display: block; width: 22px; height: 1px; background: var(--amlt); margin: 6px 0; transition: all .3s; }
+    .mob-ham.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .mob-ham.open span:nth-child(2) { opacity: 0; }
+    .mob-ham.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .mob-menu {
+      display: none; position: fixed; inset: 0; z-index: 550;
+      background: var(--bb3); flex-direction: column; align-items: center; justify-content: center; gap: 36px;
+    }
+
+    .mob-menu.open { display: flex; }
+    .mob-menu a { font-family: 'Cormorant Garamond', serif; font-size: 2.4rem; font-weight: 300; color: var(--milk); text-decoration: none; transition: color .2s; }
+    .mob-menu a:hover { color: var(--amlt); }
+    .mob-menu .mob-cta { font-family: 'Jost', sans-serif; font-size: .65rem; letter-spacing: .22em; text-transform: uppercase; background: var(--amber); color: var(--ink); padding: 14px 36px; font-weight: 500; font-size: .65rem; }
+    .mob-x { position: absolute; top: 24px; right: 28px; background: none; border: none; font-size: 1.4rem; color: var(--milk); cursor: pointer; }
+
+    .mob-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 99;
+      background: rgba(6,14,17,0.95); border-top: 1px solid rgba(169,112,69,0.12);
+      backdrop-filter: blur(8px);
+    }
+
+    .mob-bar-i { display: flex; }
+    .mob-bar a { display: flex; align-items: center; justify-content: center; gap: 8px; color: var(--milk); text-decoration: none; font-size: .72rem; font-weight: 400; padding: 16px; width: 50%; letter-spacing: .08em; }
+    .mob-bar a.fill { background: var(--amber); color: var(--ink); font-weight: 500; }
+
+    @media (max-width: 960px) {
+      body { cursor: auto; }
+      #cur, #cur-ring { display: none; }
+      nav { display: none; }
+      .mob-nav { display: flex; }
+
+      .s-hero { grid-template-columns: 1fr; min-height: auto; padding-top: 80px; }
+      .hero-right { display: none; }
+      .hero-left { padding: 80px 24px 60px; }
+      .hero-stats { position: static; margin-top: 32px; flex-direction: row; flex-wrap: wrap; gap: 12px; }
+
+      .s-about { grid-template-columns: 1fr; }
+      .about-right { min-height: 300px; padding: 60px 24px; }
+      .about-left { padding: 72px 24px; }
+
+      .svc-header { padding: 0 24px 40px; flex-direction: column; align-items: flex-start; gap: 16px; }
+      .svc-row { grid-template-columns: 56px 1fr; padding: 20px 24px; }
+      .svc-desc, .svc-arrow { display: none; }
+      .svc-num { font-size: 2.4rem; }
+
+      .s-doctors { padding: 72px 24px; }
+      .doc-grid { grid-template-columns: 1fr; }
+
+      .s-testi { padding: 80px 24px; min-height: auto; }
+      .testi-inner { grid-template-columns: 1fr; gap: 40px; }
+
+      .s-trust { padding: 24px; gap: 16px; }
+      .t-div { display: none; }
+
+      .s-contact { grid-template-columns: 1fr; }
+      .contact-left { padding: 72px 24px 48px; }
+      .contact-right { padding: 48px 24px 100px; }
+      .form-2c { grid-template-columns: 1fr; gap: 0; }
+
+      footer { padding: 48px 24px 100px; }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .footer-bot { flex-direction: column; gap: 8px; }
+      .mob-bar { display: block; }
+      #btt { bottom: 80px; right: 16px; }
+    }
+
+    @media (max-width: 520px) {
+      .hero-h1 { font-size: 3rem; }
+      .footer-top { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="cur"></div>
+  <div id="cur-ring"></div>
+  <div id="prog"></div>
+  <button id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-brand">Personal Care Dental Group</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#doctors">Doctors</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </nav>
+
+  <!-- MOBILE NAV -->
+  <div class="mob-nav">
+    <div class="mob-brand">Personal Care Dental Group</div>
+    <button class="mob-ham" id="mobHam" onclick="togMenu()"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mob-menu" id="mobMenu">
+    <button class="mob-x" onclick="togMenu()">✕</button>
+    <a href="#about" onclick="togMenu()">About</a>
+    <a href="#services" onclick="togMenu()">Services</a>
+    <a href="#doctors" onclick="togMenu()">Doctors</a>
+    <a href="#contact" onclick="togMenu()">Contact</a>
+    <a href="#contact" class="mob-cta" onclick="togMenu()">Book Now</a>
+  </div>
+  <div class="mob-bar">
+    <div class="mob-bar-i">
+      <a href="tel:8167371110">📞 Call Us</a>
+      <a href="#contact" class="fill">Book Now</a>
+    </div>
+  </div>
+
+  <!-- ══ HERO ══ -->
+  <section class="s-hero" id="home">
+    <div class="hero-left">
+      <div class="s1-bg-letter" style="position:absolute;top:-80px;left:-30px;font-family:'Cormorant Garamond',serif;font-size:700px;font-weight:900;line-height:1;color:rgba(169,112,69,0.025);pointer-events:none;user-select:none;">P</div>
+
+      <div class="hero-eyebrow rv">Raytown, Missouri · Est. 1980</div>
+
+      <h1 class="hero-h1 rv d1">
+        Your smile<br>
+        <em>deserves</em>
+        <strong>personal</strong>
+        care.
+      </h1>
+
+      <p class="hero-sub rv d2">Three experienced doctors. All ages welcome — from 6 months to 96. A community practice built on genuine relationships.</p>
+
+      <div class="hero-actions rv d3">
+        <a href="#contact" class="btn-fill"><span>Book Appointment</span></a>
+        <a href="#services" class="btn-line">Explore Services</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-img-placeholder">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="rgba(169,112,69,0.2)" stroke-width="0.8"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        <div class="hero-img-label">Team / Office Photo</div>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card rv d2">
+          <div class="stat-num">45+</div>
+          <div class="stat-lbl">Years in Raytown</div>
+        </div>
+        <div class="stat-card rv d3">
+          <div class="stat-num">3</div>
+          <div class="stat-lbl">Experienced Doctors</div>
+        </div>
+        <div class="stat-card rv d4">
+          <div class="stat-num">4.9★</div>
+          <div class="stat-lbl">Patient Rating</div>
+        </div>
+      </div>
+
+      <div class="hero-corner"></div>
+    </div>
+  </section>
+
+  <!-- ══ MARQUEE ══ -->
+  <div class="s-marquee">
+    <div class="m-track">
+      <span class="m-item">General Dentistry</span><span class="m-sep">✦</span>
+      <span class="m-item">Pediatric Care</span><span class="m-sep">✦</span>
+      <span class="m-item">Cosmetic Dentistry</span><span class="m-sep">✦</span>
+      <span class="m-item">Invisalign®</span><span class="m-sep">✦</span>
+      <span class="m-item">Dental Implants</span><span class="m-sep">✦</span>
+      <span class="m-item">Sleep Apnea Therapy</span><span class="m-sep">✦</span>
+      <span class="m-item">All Ages Welcome</span><span class="m-sep">✦</span>
+      <span class="m-item">Est. 1980 · Raytown MO</span><span class="m-sep">✦</span>
+      <span class="m-item">General Dentistry</span><span class="m-sep">✦</span>
+      <span class="m-item">Pediatric Care</span><span class="m-sep">✦</span>
+      <span class="m-item">Cosmetic Dentistry</span><span class="m-sep">✦</span>
+      <span class="m-item">Invisalign®</span><span class="m-sep">✦</span>
+      <span class="m-item">Dental Implants</span><span class="m-sep">✦</span>
+      <span class="m-item">Sleep Apnea Therapy</span><span class="m-sep">✦</span>
+      <span class="m-item">All Ages Welcome</span><span class="m-sep">✦</span>
+      <span class="m-item">Est. 1980 · Raytown MO</span><span class="m-sep">✦</span>
+    </div>
+  </div>
+
+  <!-- ══ ABOUT ══ -->
+  <section class="s-about" id="about">
+    <div class="about-left">
+      <div class="about-year-bg">1980</div>
+      <div class="about-left-content">
+        <div class="about-eyebrow rv">Our Story</div>
+        <h2 class="about-h2 rv d1">Rooted in<br><em>community.</em></h2>
+        <div class="about-pull rv d2">"We take time to listen, explain, and ensure every visit feels comfortable and unhurried."</div>
+        <p class="about-body rv d3">Personal Care Dental Group has called Raytown home since 1980. Unlike corporate dental chains, we know our patients by name and invest in relationships that last generations. We're a privately owned, multi-doctor practice where patients of every age feel genuinely at home.</p>
+        <div class="about-facts rv d4">
+          <div class="fact"><div class="fact-num" data-count="45">0</div><div class="fact-lbl">Years Serving</div></div>
+          <div class="fact"><div class="fact-num" data-count="3">0</div><div class="fact-lbl">Doctors</div></div>
+          <div class="fact"><div class="fact-num" data-target="4.9">0</div><div class="fact-lbl">Rating ★</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-right-quote rv">
+        <span class="about-big-q">"</span>
+        <p class="about-quote-text">A community practice built on genuine relationships since 1980.</p>
+        <span class="about-quote-attr">Personal Care Dental Group · Raytown, MO</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SERVICES ══ -->
+  <section class="s-services" id="services">
+    <div class="svc-header">
+      <div>
+        <div class="svc-eyebrow rv">What We Do</div>
+        <h2 class="svc-h2 rv d1">What we<br><em>do best</em></h2>
+      </div>
+      <div class="svc-count rv d2">06</div>
+    </div>
+
+    <div class="svc-row rv">
+      <div class="svc-num">01</div>
+      <div class="svc-body">
+        <div class="svc-namerow"><span class="svc-icon">🦷</span><div class="svc-name">General Dentistry</div></div>
+        <div class="svc-desc">Cleanings, exams, fillings, and preventive care to keep your smile healthy for life.</div>
+      </div>
+      <a href="#" class="svc-arrow">View →</a>
+    </div>
+
+    <div class="svc-row rv d1">
+      <div class="svc-num">02</div>
+      <div class="svc-body">
+        <div class="svc-namerow"><span class="svc-icon">👶</span><div class="svc-name">Pediatric Care</div></div>
+        <div class="svc-desc">Gentle, friendly care for children starting at 6 months, building healthy habits early.</div>
+      </div>
+      <a href="#" class="svc-arrow">View →</a>
+    </div>
+
+    <div class="svc-row rv d2">
+      <div class="svc-num">03</div>
+      <div class="svc-body">
+        <div class="svc-namerow"><span class="svc-icon">✨</span><div class="svc-name">Cosmetic Dentistry</div></div>
+        <div class="svc-desc">Whitenings, veneers, and smile makeovers that boost your confidence naturally.</div>
+      </div>
+      <a href="#" class="svc-arrow">View →</a>
+    </div>
+
+    <div class="svc-row rv d3">
+      <div class="svc-num">04</div>
+      <div class="svc-body">
+        <div class="svc-namerow"><span class="svc-icon">😁</span><div class="svc-name">Invisalign®</div></div>
+        <div class="svc-desc">Certified providers since 2007. Straighten your smile discreetly and comfortably.</div>
+      </div>
+      <a href="#" class="svc-arrow">View →</a>
+    </div>
+
+    <div class="svc-row rv d4">
+      <div class="svc-num">05</div>
+      <div class="svc-body">
+        <div class="svc-namerow"><span class="svc-icon">🦷</span><div class="svc-name">Dental Implants</div></div>
+        <div class="svc-desc">Permanent, natural-looking tooth replacement to restore your smile and function.</div>
+      </div>
+      <a href="#" class="svc-arrow">View →</a>
+    </div>
+
+    <div class="svc-row rv d5">
+      <div class="svc-num">06</div>
+      <div class="svc-body">
+        <div class="svc-namerow"><span class="svc-icon">💤</span><div class="svc-name">Sleep Apnea</div></div>
+        <div class="svc-desc">Custom oral appliance therapy — a comfortable, effective CPAP alternative.</div>
+      </div>
+      <a href="#" class="svc-arrow">View →</a>
+    </div>
+  </section>
+
+  <!-- ══ DOCTORS ══ -->
+  <section class="s-doctors" id="doctors">
+    <div class="doc-header">
+      <div class="doc-eyebrow rv">Our Physicians</div>
+      <h2 class="doc-h2 rv d1">The people<br><em>behind your care</em></h2>
+    </div>
+
+    <div class="doc-grid">
+      <div class="doc-card rv d1">
+        <div class="doc-photo-area">
+          <div class="doc-placeholder">Photo</div>
+          <div class="doc-blurb">25+ years bringing confidence and genuine comfort to every patient she serves.</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Rubelita James</div>
+          <div class="doc-cred">D.D.S.</div>
+          <div class="doc-bar"></div>
+          <div class="doc-spec">General & Cosmetic Dentistry · Invisalign Provider · 25+ years in practice</div>
+        </div>
+      </div>
+
+      <div class="doc-card rv d2">
+        <div class="doc-photo-area">
+          <div class="doc-placeholder">Photo</div>
+          <div class="doc-blurb">Known for her gentle touch and ability to put even the most anxious patients at ease.</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Rodriguez</div>
+          <div class="doc-cred">D.D.S.</div>
+          <div class="doc-bar"></div>
+          <div class="doc-spec">General Dentistry · Patient Comfort Focused · Welcoming all ages</div>
+        </div>
+      </div>
+
+      <div class="doc-card rv d3">
+        <div class="doc-photo-area">
+          <div class="doc-placeholder">Photo</div>
+          <div class="doc-blurb">Passionate about pediatric care — making every child's first dental visit a great one.</div>
+        </div>
+        <div class="doc-info">
+          <div class="doc-name">Dr. Rachel Kim</div>
+          <div class="doc-cred">D.D.S.</div>
+          <div class="doc-bar"></div>
+          <div class="doc-spec">General & Pediatric Dentistry · Invisalign Provider · Ages 6 months & up</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TESTIMONIALS ══ -->
+  <section class="s-testi" id="reviews">
+    <div class="testi-inner">
+      <div class="rv">
+        <div class="testi-stars">★★★★★</div>
+        <p class="testi-main-quote">"Dr. Rodriguez and her team are great. I truly enjoyed my experience — I felt welcomed and cared for the whole time."</p>
+        <div class="testi-attr">— New Patient · Kansas City</div>
+      </div>
+      <div class="testi-side rv-r d2">
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">"Everyone was so nice and patient with me. I really appreciated it."</p>
+          <div class="tc-attr">— Verified Patient</div>
+        </div>
+        <div class="testi-card">
+          <div class="tc-stars">★★★★★</div>
+          <p class="tc-text">"First visit. Very knowledgeable, friendly place. I'll be coming back for all my dental care."</p>
+          <div class="tc-attr">— Verified Patient</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TRUST ══ -->
+  <div class="s-trust rv">
+    <div class="t-item"><span class="t-ico">✓</span><div class="t-txt"><strong>All Ages Welcome</strong><span>6 months & up</span></div></div>
+    <div class="t-div"></div>
+    <div class="t-item"><span class="t-ico">💳</span><div class="t-txt"><strong>Accepts Insurance</strong><span>Most major plans</span></div></div>
+    <div class="t-div"></div>
+    <div class="t-item"><span class="t-ico">😌</span><div class="t-txt"><strong>Nitrous Oxide</strong><span>Gentle comfort option</span></div></div>
+    <div class="t-div"></div>
+    <div class="t-item"><span class="t-ico">🕐</span><div class="t-txt"><strong>Extended Hours</strong><span>Mon–Thu until 6:30 PM</span></div></div>
+  </div>
+
+  <!-- ══ CONTACT ══ -->
+  <section class="s-contact" id="contact">
+    <div class="contact-left">
+      <div class="contact-eyebrow rv">Get In Touch</div>
+      <h2 class="contact-h2 rv d1">Let's talk about<br><em>your smile.</em></h2>
+      <p class="contact-sub rv d2">We're currently welcoming new patients of all ages. Our team will reach out within one business day to confirm your appointment.</p>
+      <div class="contact-info rv d3">
+        <div class="c-row"><span class="c-ico">📞</span>(816) 737-1110</div>
+        <div class="c-row"><span class="c-ico">📍</span>9500 E 63rd St, Suite 103, Raytown, MO 64133</div>
+        <div class="c-row"><span class="c-ico">🕐</span>Mon–Thu 7:30AM–6:30PM · Fri 7:30AM–1PM</div>
+        <div class="c-row"><span class="c-ico">✉️</span>ins@personalcaredental.com</div>
+      </div>
+    </div>
+
+    <div class="contact-right">
+      <div class="form-wrap rv">
+        <div class="form-ttl">Request Appointment</div>
+        <div class="form-2c">
+          <div class="form-row"><label>First Name</label><input type="text" placeholder="Jane"></div>
+          <div class="form-row"><label>Last Name</label><input type="text" placeholder="Smith"></div>
+        </div>
+        <div class="form-row"><label>Phone</label><input type="tel" placeholder="(816) 555-0100"></div>
+        <div class="form-row"><label>Email</label><input type="email" placeholder="jane@email.com"></div>
+        <div class="form-row">
+          <label>Service Needed</label>
+          <select>
+            <option>General Cleaning / Exam</option><option>Cosmetic Consultation</option>
+            <option>Invisalign Consultation</option><option>Dental Implants</option>
+            <option>Pediatric Visit</option><option>Sleep Apnea</option>
+            <option>Emergency</option><option>Other</option>
+          </select>
+        </div>
+        <div class="form-row"><label>New or Existing Patient?</label><select><option>New Patient</option><option>Existing Patient</option></select></div>
+        <div class="form-row"><label>Notes</label><textarea placeholder="Insurance, preferred times, any questions..."></textarea></div>
+        <button class="btn-submit"><span>Submit Request</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="f-logo">Personal Care Dental Group</div>
+        <div class="f-tagline">Where Smiles Make Smiles</div>
+        <p>A privately owned, multi-doctor practice serving Raytown and the greater Kansas City metro since 1980.</p>
+      </div>
+      <div class="f-col"><h4>Services</h4><ul><li><a href="#">General Dentistry</a></li><li><a href="#">Pediatric Care</a></li><li><a href="#">Cosmetic Dentistry</a></li><li><a href="#">Invisalign®</a></li><li><a href="#">Dental Implants</a></li><li><a href="#">Sleep Apnea</a></li></ul></div>
+      <div class="f-col"><h4>Practice</h4><ul><li><a href="#">Meet Our Doctors</a></li><li><a href="#">About Us</a></li><li><a href="#">Patient Forms</a></li><li><a href="#">Insurance & Billing</a></li><li><a href="#">Accessibility</a></li></ul></div>
+      <div class="f-col"><h4>Contact</h4><ul><li><a href="#">(816) 737-1110</a></li><li><a href="#">ins@personalcaredental.com</a></li><li><a href="#">9500 E 63rd St #103</a></li><li><a href="#">Raytown, MO 64133</a></li><li><a href="#">Get Directions</a></li></ul></div>
+    </div>
+    <div class="footer-bot">
+      <span>© 2026 Personal Care Dental Group, LLC. All rights reserved.</span>
+      <span><a href="#">Privacy Policy</a> · <a href="#">Accessibility</a></span>
+    </div>
+  </footer>
+
+  <script>
+    /* Cursor */
+    const cur = document.getElementById('cur');
+    const ring = document.getElementById('cur-ring');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; });
+    (function animC(){
+      cur.style.left=mx+'px'; cur.style.top=my+'px';
+      rx+=(mx-rx)*.1; ry+=(my-ry)*.1;
+      ring.style.left=rx+'px'; ring.style.top=ry+'px';
+      requestAnimationFrame(animC);
+    })();
+    document.querySelectorAll('a,button,.svc-row,.doc-card,.testi-card').forEach(el=>{
+      el.addEventListener('mouseenter',()=>document.body.classList.add('hovering'));
+      el.addEventListener('mouseleave',()=>document.body.classList.remove('hovering'));
+    });
+
+    /* Progress bar */
+    const prog = document.getElementById('prog');
+    const btt = document.getElementById('btt');
+    window.addEventListener('scroll',()=>{
+      const st=window.scrollY;
+      const dh=document.documentElement.scrollHeight-window.innerHeight;
+      prog.style.width=(st/dh*100)+'%';
+      btt.classList.toggle('show',st>400);
+    },{passive:true});
+
+    /* Mobile menu */
+    function togMenu(){
+      const m=document.getElementById('mobMenu');
+      const h=document.getElementById('mobHam');
+      m.classList.toggle('open');
+      h.classList.toggle('open');
+      document.body.style.overflow=m.classList.contains('open')?'hidden':'';
+    }
+
+    /* Reveal */
+    document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>
+      new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('go'); });
+      },{threshold:0.1}).observe(el)
+    );
+
+    /* Counters */
+    function animNum(el){
+      const isFloat=el.dataset.target!==undefined;
+      const target=parseFloat(el.dataset.count||el.dataset.target);
+      const dur=1800; const start=performance.now();
+      const update=now=>{
+        const p=Math.min((now-start)/dur,1);
+        const ease=1-Math.pow(1-p,3);
+        el.textContent=isFloat?(target*ease).toFixed(1):Math.floor(target*ease);
+        if(p<1) requestAnimationFrame(update);
+        else el.textContent=isFloat?target.toFixed(1)+'★':target+'+';
+      };
+      requestAnimationFrame(update);
+    }
+    document.querySelectorAll('[data-count],[data-target]').forEach(el=>{
+      new IntersectionObserver((entries)=>{
+        entries.forEach(e=>{ if(e.isIntersecting) animNum(e.target); });
+      },{threshold:0.5}).observe(el);
+    });
+
+    /* Magnetic buttons */
+    document.querySelectorAll('.btn-fill,.btn-submit,.nav-cta').forEach(btn=>{
+      btn.addEventListener('mousemove',e=>{
+        const r=btn.getBoundingClientRect();
+        btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.1}px,${(e.clientY-(r.top+r.height/2))*.1}px)`;
+      });
+      btn.addEventListener('mouseleave',()=>btn.style.transform='');
+    });
+  </script>
+</body>
+</html>
