@@ -731,6 +731,8 @@
     .doctor-overlay-inner {
       transform: translateY(24px);
       transition: transform 0.5s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-light) transparent;
     }
 
     .doctor-card:hover .doctor-overlay-inner {
@@ -1218,7 +1220,7 @@
 
       .doctor-overlay {
         opacity: 1;
-        background: linear-gradient(180deg, rgba(10,10,10,0) 40%, rgba(10,10,10,0.85) 100%);
+        background: linear-gradient(180deg, rgba(10, 10, 10, 0) 40%, rgba(10, 10, 10, 0.85) 100%);
       }
 
       .doctor-overlay-inner {
@@ -1531,6 +1533,7 @@
       }
 
     }
+
     /* ── DOCTOR BIO BUTTON (mobile only trigger) ── */
     .doctor-bio-btn {
       display: none;
@@ -1571,8 +1574,13 @@
     }
 
     @keyframes slideUp {
-      from { transform: translateY(100%); }
-      to { transform: translateY(0); }
+      from {
+        transform: translateY(100%);
+      }
+
+      to {
+        transform: translateY(0);
+      }
     }
 
     .doctor-modal-close {
@@ -1634,7 +1642,6 @@
       overflow-y: auto;
       max-height: 100%;
     }
-
   </style>
 </head>
 
@@ -1649,9 +1656,10 @@
       <span></span>
     </button>
     <ul id="nav-menu">
-      <li><a href="#" onclick="closeMenu()">The Art</a></li>
+      <li><a href="#" onclick="closeMenu()">Meet Our Team</a></li>
       <li><a href="#" onclick="closeMenu()">Services</a></li>
-      <li><a href="#" onclick="closeMenu()">Our Doctors</a></li>
+      <li><a href="#" onclick="closeMenu()">Patient Information</a></li>
+      <li><a href="#" onclick="closeMenu()">Contact Us</a></li>
       <li><a href="#" class="cta" onclick="closeMenu()">Reserve</a></li>
     </ul>
   </nav>
@@ -1827,9 +1835,7 @@
       <h2 class="section-title">Our <i>Doctors</i></h2>
     </div>
     <div class="doctors-grid">
-      <div class="doctor-card reveal"
-        data-name="Dr. Rubelita R. James"
-        data-creds="D.D.S. · General & Cosmetic"
+      <div class="doctor-card reveal" data-name="Dr. Rubelita R. James" data-creds="D.D.S. · General & Cosmetic"
         data-img="images/rubelita_james_dds.jpg"
         data-bio="Dr. Rubelita James is a seasoned expert with over 35 years of experience. A pioneer in her field, she graduated from the University of Missouri-Kansas City School of Dentistry in 1989 as the youngest member of the inaugural six-year dental class.\n\nToday, she serves as the senior partner at Personal Care Dental Group, where she combines a deep passion for oral health with modern innovation. A certified Invisalign provider since 2007, Dr. James is dedicated to empowering her patients by exploring every modern dental solution available to enhance their smiles.\n\nWhen she isn't in the office, you'll likely find her on the tennis or pickleball courts, experimenting with new recipes in the kitchen, or cheering at local high school sporting events.">
         <div class="doctor-photo">
@@ -1858,10 +1864,8 @@
         <button class="doctor-bio-btn">Read Bio</button>
       </div>
 
-      <div class="doctor-card reveal reveal-delay-1"
-        data-name="Dr. Paula Rodriguez"
-        data-creds="D.D.S. · Restorative & Implants"
-        data-img="images/paula_rodriguez_dds.jpg"
+      <div class="doctor-card reveal reveal-delay-1" data-name="Dr. Paula Rodriguez"
+        data-creds="D.D.S. · Restorative & Implants" data-img="images/paula_rodriguez_dds.jpg"
         data-bio="Dr. Paula Rodriguez is all about providing high-quality, advanced dental care in a space where you can truly feel at home. She loves working with patients of all ages and is always excited to bring the latest dental tech and techniques into her practice.\n\nA Liberty local since moving from Peru at age six, Paula's passion for dentistry started early. After graduating from Liberty High School, she headed to UMKC, where she earned degrees in Chemistry, Psychology, and Spanish before completing her dental degree.\n\nShe's never stopped learning, either. Paula has pursued specialized training in dental implants and Invisalign and stays active in the American Dental Association and the Greater Kansas City Dental Society.\n\nWhen she's not helping patients smile, you'll likely find her volunteering in the community or cheering on the Chiefs and Royals.">
         <div class="doctor-photo">
           <img src="images/paula_rodriguez_dds.jpg" alt="Dr. Paula Rodriguez"
@@ -1891,10 +1895,8 @@
         <button class="doctor-bio-btn">Read Bio</button>
       </div>
 
-      <div class="doctor-card reveal reveal-delay-2"
-        data-name="Dr. Rachel Kim"
-        data-creds="D.D.S. · Pediatric & Preventive"
-        data-img="images/rachel_kim_dds.jpg"
+      <div class="doctor-card reveal reveal-delay-2" data-name="Dr. Rachel Kim"
+        data-creds="D.D.S. · Pediatric & Preventive" data-img="images/rachel_kim_dds.jpg"
         data-bio="A native of New York City, Dr. Rachel Kim earned her B.A. from New York University and her Doctor of Dental Surgery degree from the University at Buffalo School of Dental Medicine. She then completed her residency training at the Albert Einstein Medical Center in Philadelphia.\n\nEach year, Dr. Kim invests numerous hours to stay on top of the latest practices to deliver high quality care to all her patients. She is an active member of a dentist study club in Overland Park, KS.\n\nDr. Kim is an Invisalign-certified dentist and currently heads the Service Committee for the Kansas City Women Dentists group.\n\nIn her free time, Dr. Kim enjoys spoiling her Corgis, Hank and Lily, and is known for her kindness, warm personality, and positive attitude.">
         <div class="doctor-photo">
           <img src="images/rachel_kim_dds.jpg" alt="Dr. Rachel Kim"
