@@ -691,29 +691,57 @@
     .doctor-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.0) 0%, rgba(10, 10, 10, 0.75) 35%, rgba(10, 10, 10, 0.97) 100%);
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.0) 0%, rgba(10, 10, 10, 0.75) 25%, rgba(10, 10, 10, 0.97) 100%);
       display: flex;
       flex-direction: column;
       justify-content: flex-end;
-      padding: 36px 28px;
+      padding: 0;
       opacity: 0;
       transition: opacity 0.4s ease;
+      overflow: hidden;
     }
 
     .doctor-card:hover .doctor-overlay {
       opacity: 1;
     }
 
+    .doctor-overlay-inner {
+      padding: 24px 20px;
+      overflow-y: auto;
+      max-height: 100%;
+      transform: translateY(16px);
+      transition: transform 0.5s ease;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-light) transparent;
+    }
+
+    .doctor-overlay-inner::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .doctor-overlay-inner::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .doctor-overlay-inner::-webkit-scrollbar-thumb {
+      background: var(--gold-light);
+      border-radius: 2px;
+    }
+
+    .doctor-card:hover .doctor-overlay-inner {
+      transform: translateY(0);
+    }
+
     .doctor-overlay-name {
       font-family: var(--font-display);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       color: var(--cream);
       margin-bottom: 4px;
       font-weight: 600;
     }
 
     .doctor-overlay-creds {
-      font-size: 0.65rem;
+      font-size: 0.62rem;
       letter-spacing: 2px;
       text-transform: uppercase;
       color: var(--gold-light);
@@ -722,21 +750,10 @@
 
     .doctor-overlay-blurb {
       font-family: var(--font-body);
-      font-size: 0.92rem;
+      font-size: 0.88rem;
       line-height: 1.65;
       color: rgba(250, 246, 240, 0.88);
       font-weight: 400;
-    }
-
-    .doctor-overlay-inner {
-      transform: translateY(24px);
-      transition: transform 0.5s ease;
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold-light) transparent;
-    }
-
-    .doctor-card:hover .doctor-overlay-inner {
-      transform: translateY(0);
     }
 
     /* ── TESTIMONIALS ── */
@@ -1431,19 +1448,12 @@
         display: none;
       }
 
-      .doctor-bio-btn {
+      .doctor-about-btn {
         display: block;
-        width: 100%;
-        padding: 14px;
-        background: var(--ink);
-        color: var(--cream);
-        border: none;
-        font-family: var(--font-body);
-        font-size: 0.68rem;
-        letter-spacing: 2.5px;
-        text-transform: uppercase;
-        cursor: pointer;
-        margin-top: 0;
+      }
+
+      .doctor-bio-btn {
+        display: none;
       }
 
       /* ── TESTIMONIALS ── */
@@ -1534,9 +1544,24 @@
 
     }
 
-    /* ── DOCTOR BIO BUTTON (mobile only trigger) ── */
-    .doctor-bio-btn {
+    /* ── DOCTOR ABOUT BUTTON (mobile only) ── */
+    .doctor-about-btn {
       display: none;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      background: rgba(10, 10, 10, 0.6);
+      color: var(--cream);
+      border: 1px solid rgba(250, 246, 240, 0.4);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 12px;
+      border-radius: 100px;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
     }
 
     /* ── DOCTOR MODAL ── */
@@ -1545,7 +1570,7 @@
       position: fixed;
       inset: 0;
       z-index: 1000;
-      align-items: flex-end;
+      align-items: center;
       justify-content: center;
     }
 
@@ -1556,37 +1581,41 @@
     .doctor-modal-backdrop {
       position: absolute;
       inset: 0;
-      background: rgba(10, 10, 10, 0.7);
-      backdrop-filter: blur(4px);
+      background: rgba(10, 10, 10, 0.85);
+      backdrop-filter: blur(6px);
     }
 
     .doctor-modal-card {
       position: relative;
       z-index: 1;
       background: var(--cream);
-      width: 100%;
-      max-width: 480px;
-      max-height: 85vh;
+      width: 92%;
+      max-width: 420px;
+      max-height: 88vh;
       overflow-y: auto;
-      border-radius: 20px 20px 0 0;
-      padding: 32px 28px 48px;
-      animation: slideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      border-radius: 20px;
+      padding: 32px 28px 40px;
+      animation: modalSlideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-light) transparent;
     }
 
-    @keyframes slideUp {
+    @keyframes modalSlideUp {
       from {
-        transform: translateY(100%);
+        transform: translateY(30px);
+        opacity: 0;
       }
 
       to {
         transform: translateY(0);
+        opacity: 1;
       }
     }
 
     .doctor-modal-close {
       position: absolute;
-      top: 16px;
-      right: 16px;
+      top: 14px;
+      right: 14px;
       background: var(--cream-mid);
       border: none;
       width: 32px;
@@ -1631,6 +1660,11 @@
       line-height: 1.75;
       color: var(--text-mid);
       white-space: pre-line;
+    }
+
+    /* ── DOCTOR OVERLAY — desktop overflow fix ── */
+    .doctor-overlay {
+      overflow: hidden;
     }
 
     /* ── DOCTOR OVERLAY — fix desktop resize overflow ── */
@@ -1847,6 +1881,7 @@
           <div class="doctor-creds">D.D.S.</div>
           <div class="doctor-specialty">General &amp; Cosmetic Dentistry</div>
         </div>
+        <button class="doctor-about-btn" aria-label="About Dr. James">About</button>
         <div class="doctor-overlay">
           <div class="doctor-overlay-inner">
             <div class="doctor-overlay-name">Dr. Rubelita R. James</div>
@@ -1876,6 +1911,7 @@
           <div class="doctor-creds">D.D.S.</div>
           <div class="doctor-specialty">Restorative &amp; Implant Dentistry</div>
         </div>
+        <button class="doctor-about-btn" aria-label="About Dr. Rodriguez">About</button>
         <div class="doctor-overlay">
           <div class="doctor-overlay-inner">
             <div class="doctor-overlay-name">Dr. Paula Rodriguez</div>
@@ -1907,6 +1943,7 @@
           <div class="doctor-creds">D.D.S.</div>
           <div class="doctor-specialty">Pediatric &amp; Preventive Care</div>
         </div>
+        <button class="doctor-about-btn" aria-label="About Dr. Kim">About</button>
         <div class="doctor-overlay">
           <div class="doctor-overlay-inner">
             <div class="doctor-overlay-name">Dr. Rachel Kim</div>
@@ -2150,7 +2187,7 @@
     const modalCreds = document.getElementById('modal-creds');
     const modalBio = document.getElementById('modal-bio');
 
-    document.querySelectorAll('.doctor-bio-btn').forEach(btn => {
+    document.querySelectorAll('.doctor-about-btn').forEach(btn => {
       btn.addEventListener('click', () => {
         const card = btn.closest('.doctor-card');
         modalImg.src = card.dataset.img;
