@@ -120,6 +120,53 @@
       align-items: center;
     }
 
+    /* ── NAV DROPDOWN ── */
+    .nav-dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: rgba(250, 246, 240, 0.98);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(180, 140, 130, 0.15);
+      border-radius: 8px;
+      padding: 8px 0;
+      min-width: 180px;
+      list-style: none;
+      gap: 0;
+      z-index: 200;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (min-width: 769px) {
+      .nav-dropdown:hover .dropdown-menu {
+        display: block;
+      }
+    }
+
+    .dropdown-menu li a {
+      display: block;
+      padding: 12px 20px;
+      font-size: 0.72rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .dropdown-menu li a:hover {
+      color: var(--gold);
+    }
+
+    .dropdown-menu li+li {
+      border-top: 1px solid rgba(180, 140, 130, 0.1);
+    }
+
     nav a {
       text-decoration: none;
       color: var(--ink);
@@ -1471,11 +1518,11 @@
         display: flex;
       }
 
-      #nav-menu li {
+      #nav-menu > li {
         border-bottom: 1px solid var(--cream-mid);
       }
 
-      #nav-menu li:last-child {
+      #nav-menu > li:last-child {
         border-bottom: none;
         margin-top: 16px;
       }
@@ -1492,6 +1539,38 @@
         padding: 14px 24px;
         text-align: center;
         display: block;
+      }
+
+      .dropdown-menu {
+        position: static;
+        display: none;
+        box-shadow: none;
+        border: none;
+        border-radius: 0;
+        padding: 0 0 8px 16px;
+        background: transparent;
+        backdrop-filter: none;
+        min-width: unset;
+        list-style: none;
+      }
+
+      .dropdown-menu.open {
+        display: block;
+      }
+
+      .dropdown-menu li {
+        border-bottom: none;
+        margin-top: 0;
+      }
+
+      .dropdown-menu li a {
+        padding: 10px 0;
+        font-size: 0.68rem;
+        color: var(--text-mid);
+      }
+
+      .dropdown-menu li + li {
+        border-top: 1px solid var(--cream-mid);
       }
 
       /* ── HERO ── */
@@ -1716,9 +1795,15 @@
     <ul id="nav-menu">
       <li><a href="#" onclick="closeMenu()">Meet Our Team</a></li>
       <li><a href="#" onclick="closeMenu()">Services</a></li>
-      <li><a href="#" onclick="closeMenu()">Patient Information</a></li>
-      <li><a href="#" onclick="closeMenu()">Contact Us</a></li>
-      <li><a href="#" class="cta" onclick="closeMenu()">Reserve</a></li>
+      <li class="nav-dropdown">
+        <a href="#" id="patient-info-link">Patient Information <span id="dropdown-arrow">▾</span></a>
+        <ul class="dropdown-menu">
+          <li><a href="#">Patient Forms</a></li>
+          <li><a href="#">Financial</a></li>
+          <li><a href="https://patient.operadds.com/Account/Login" target="_blank">Patient Portal</a></li>
+        </ul>
+      </li>
+      <li><a href="#" class="cta" onclick="closeMenu()">Contact Us</a></li>
     </ul>
   </nav>
 
@@ -2307,7 +2392,27 @@
     function closeMenu() {
       hamburger.classList.remove('open');
       navMenu.classList.remove('open');
+      // Also close dropdown if open
+      const openDropdown = document.querySelector('.dropdown-menu.open');
+      if (openDropdown) openDropdown.classList.remove('open');
     }
+
+    // Patient Information dropdown toggle on mobile
+    document.getElementById('patient-info-link').addEventListener('click', function(e) {
+      e.preventDefault();
+      if (window.innerWidth <= 768) {
+        const menu = document.querySelector('.dropdown-menu');
+        const arrow = document.getElementById('dropdown-arrow');
+        const isOpen = menu.classList.contains('open');
+        if (isOpen) {
+          menu.classList.remove('open');
+          arrow.textContent = '▾';
+        } else {
+          menu.classList.add('open');
+          arrow.textContent = '▴';
+        }
+      }
+    });
 
     // Nav scroll effect
     const nav = document.getElementById('nav');
