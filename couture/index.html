@@ -1729,8 +1729,8 @@
 
       /* ── HERO ── */
       .hero {
-        height: auto;
-        min-height: 100vh;
+        height: 100vh;
+        min-height: 600px;
         align-items: flex-end;
         padding-bottom: 60px;
       }
@@ -1743,9 +1743,9 @@
 
       .hero-image-fade {
         background: linear-gradient(180deg,
-            rgba(250, 248, 244, 0.3) 0%,
-            rgba(250, 248, 244, 0.75) 50%,
-            var(--cream) 85%);
+            rgba(250, 248, 244, 0.2) 0%,
+            rgba(250, 248, 244, 0.65) 45%,
+            var(--cream) 80%);
       }
 
       .hero-line {
@@ -1756,25 +1756,25 @@
         padding: 0 5%;
         max-width: 100%;
         text-align: center;
+        animation: none;
+        opacity: 1;
       }
 
-      .hero-eyebrow {
-        justify-content: center;
+      .hero-title {
+        font-size: clamp(3rem, 13vw, 4.5rem);
+        line-height: 1;
+        margin-bottom: 20px;
       }
 
-      .hero-eyebrow::before {
-        display: none;
-      }
-
-      .hero h1 {
-        font-size: clamp(3rem, 14vw, 5rem);
-        line-height: 0.95;
+      .hero-tagline {
+        margin-bottom: 28px;
       }
 
       .hero-ctas {
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        margin-bottom: 36px;
       }
 
       .btn-primary,
@@ -1787,18 +1787,15 @@
       .hero-stats {
         justify-content: center;
         flex-wrap: wrap;
-        gap: 16px;
+        gap: 12px;
       }
 
-      .stat-item {
-        align-items: center;
+      .stat {
+        border-right: none;
         padding-right: 0;
         margin-right: 0;
         flex: 0 0 40%;
-      }
-
-      .stat-divider {
-        display: none;
+        text-align: center;
       }
 
       .hero-label {
@@ -2124,7 +2121,6 @@
         <div class="services-eyebrow">What We Offer</div>
         <div class="services-title">Our <i>Services</i></div>
       </div>
-      <div class="services-count">08</div>
     </div>
 
     <div class="service-row reveal">
@@ -2150,7 +2146,7 @@
     </div>
     <div class="service-row reveal reveal-delay-3">
       <div class="service-num">04</div>
-      <div class="service-name"><span class="service-emoji">🌀</span> Invisalign</div>
+      <div class="service-name"><span class="service-emoji">😁</span> Invisalign</div>
       <div class="service-desc">Discreet, comfortable clear aligner therapy to straighten your smile without wires or
         brackets.</div>
       <div class="service-arrow">→</div>
@@ -2173,13 +2169,6 @@
       <div class="service-name"><span class="service-emoji">🪥</span> Preventative Dentistry</div>
       <div class="service-desc">Proactive care to keep your smile healthy — sealants, fluoride treatments, and
         personalized prevention plans for the whole family.</div>
-      <div class="service-arrow">→</div>
-    </div>
-    <div class="service-row reveal">
-      <div class="service-num">08</div>
-      <div class="service-name"><span class="service-emoji">😁</span> Orthodontics</div>
-      <div class="service-desc">Straighter smiles for all ages — from traditional braces to modern clear aligner options
-        tailored to your lifestyle.</div>
       <div class="service-arrow">→</div>
     </div>
   </section>
