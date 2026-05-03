@@ -160,7 +160,7 @@
     }
 
     .hero h1 {
-      font-family: 'Italiana', serif;
+      font-family: 'Cormorant', serif;
       font-size: clamp(4.5rem, 10vw, 9rem);
       line-height: 0.9;
       margin: 0;
@@ -869,10 +869,15 @@
     .testimonials-section {
       padding: 140px 8%;
       background: var(--grad-cream);
-      display: grid;
-      grid-template-columns: 1.2fr 1fr;
-      gap: 80px;
-      align-items: start;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .featured-quote {
+      max-width: 800px;
+      width: 100%;
+      text-align: center;
     }
 
     .featured-quote {}
@@ -890,16 +895,16 @@
     /* ── TESTIMONIAL CAROUSEL ── */
     .testimonial-carousel {
       position: relative;
-      min-height: 200px;
+      min-height: 160px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .testimonial-text {
       opacity: 0;
-      transition: opacity 0.8s ease;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      transition: opacity 1.2s ease;
+      text-align: center;
     }
 
     .testimonial-text.active {
@@ -909,12 +914,13 @@
 
     .testimonial-author {
       opacity: 0;
-      transition: opacity 0.8s ease 0.2s;
+      transition: opacity 1.2s ease 0.4s;
       font-size: 0.72rem;
       letter-spacing: 3px;
       text-transform: uppercase;
       color: var(--rose-deep);
-      margin-top: 16px;
+      margin-top: 20px;
+      text-align: center;
     }
 
     .testimonial-author.active {
@@ -925,6 +931,7 @@
       display: flex;
       gap: 8px;
       margin-top: 28px;
+      justify-content: center;
     }
 
     .testimonial-dot {
@@ -2002,6 +2009,7 @@
   <!-- TESTIMONIALS -->
   <section class="testimonials-section">
     <div class="featured-quote reveal">
+      <h2 class="section-title" style="margin-bottom: 32px;">Personal <i>Testimonials</i></h2>
       <div class="quote-mark">"</div>
       <div class="quote-stars">
         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
@@ -2011,28 +2019,6 @@
         <div class="quote-author testimonial-author"></div>
       </div>
       <div class="testimonial-dots"></div>
-    </div>
-    <div class="review-cards reveal reveal-delay-2">
-      <div class="review-card">
-        <p class="review-text">"Dr. Rodriguez completely transformed my smile. The implants look so natural — I forget
-          they aren't my real teeth. The whole team was incredible."</p>
-        <div class="review-meta">
-          <div class="review-author">— J. Carter</div>
-          <div class="review-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-        </div>
-      </div>
-      <div class="review-card">
-        <p class="review-text">"My kids actually look forward to their dental appointments now. Dr. Kim has a magical
-          way with children. We are patients for life."</p>
-        <div class="review-meta">
-          <div class="review-author">— A. Washington</div>
-          <div class="review-stars">
-            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -2277,16 +2263,24 @@
 
     function showTestimonial(index) {
       const dots = document.querySelectorAll('.testimonial-dot');
+
+      // Fade everything out
       textEl.classList.remove('active');
       authorEl.classList.remove('active');
+
+      // Wait for fade out, then swap content and fade in
       setTimeout(() => {
         textEl.textContent = testimonials[index].text;
         authorEl.textContent = testimonials[index].author;
-        textEl.classList.add('active');
-        authorEl.classList.add('active');
-        dots.forEach((d, i) => d.classList.toggle('active', i === index));
         currentTestimonial = index;
-      }, 800);
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+
+        // Small delay before fading in for elegance
+        setTimeout(() => {
+          textEl.classList.add('active');
+          authorEl.classList.add('active');
+        }, 100);
+      }, 1200);
     }
 
     function nextTestimonial() {
