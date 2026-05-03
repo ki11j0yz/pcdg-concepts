@@ -701,7 +701,7 @@
       overflow: hidden;
     }
 
-    .doctor-card:hover .doctor-overlay {
+    .doctor-photo:hover .doctor-overlay {
       opacity: 1;
     }
 
@@ -728,7 +728,7 @@
       border-radius: 2px;
     }
 
-    .doctor-card:hover .doctor-overlay-inner {
+    .doctor-photo:hover .doctor-overlay-inner {
       transform: translateY(0);
     }
 
@@ -1662,20 +1662,6 @@
       white-space: pre-line;
     }
 
-    /* ── DOCTOR OVERLAY — desktop overflow fix ── */
-    .doctor-overlay {
-      overflow: hidden;
-    }
-
-    /* ── DOCTOR OVERLAY — fix desktop resize overflow ── */
-    .doctor-overlay {
-      overflow: hidden;
-    }
-
-    .doctor-overlay-inner {
-      overflow-y: auto;
-      max-height: 100%;
-    }
   </style>
 </head>
 
@@ -1875,28 +1861,27 @@
         <div class="doctor-photo">
           <img src="images/rubelita_james_dds.jpg" alt="Dr. Rubelita R. James"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
+          <button class="doctor-about-btn" aria-label="About Dr. James">About</button>
+          <div class="doctor-overlay">
+            <div class="doctor-overlay-inner">
+              <div class="doctor-overlay-name">Dr. Rubelita R. James</div>
+              <div class="doctor-overlay-creds">D.D.S. &middot; General &amp; Cosmetic</div>
+              <p class="doctor-overlay-blurb">Dr. Rubelita James is a seasoned expert with over 35 years of experience. A
+                pioneer in her field, she graduated from the University of Missouri-Kansas City School of Dentistry in
+                1989 as the youngest member of the inaugural six-year dental class.<br><br>Today, she serves as the senior
+                partner at Personal Care Dental Group, where she combines a deep passion for oral health with modern
+                innovation. A certified Invisalign provider since 2007, Dr. James is dedicated to empowering her patients
+                by exploring every modern dental solution available to enhance their smiles.<br><br>When she isn't in the
+                office, you'll likely find her on the tennis or pickleball courts, experimenting with new recipes in the
+                kitchen, or cheering at local high school sporting events.</p>
+            </div>
+          </div>
         </div>
         <div class="doctor-info">
           <div class="doctor-name">Dr. Rubelita R. James</div>
           <div class="doctor-creds">D.D.S.</div>
           <div class="doctor-specialty">General &amp; Cosmetic Dentistry</div>
         </div>
-        <button class="doctor-about-btn" aria-label="About Dr. James">About</button>
-        <div class="doctor-overlay">
-          <div class="doctor-overlay-inner">
-            <div class="doctor-overlay-name">Dr. Rubelita R. James</div>
-            <div class="doctor-overlay-creds">D.D.S. &middot; General &amp; Cosmetic</div>
-            <p class="doctor-overlay-blurb">Dr. Rubelita James is a seasoned expert with over 35 years of experience. A
-              pioneer in her field, she graduated from the University of Missouri-Kansas City School of Dentistry in
-              1989 as the youngest member of the inaugural six-year dental class.<br><br>Today, she serves as the senior
-              partner at Personal Care Dental Group, where she combines a deep passion for oral health with modern
-              innovation. A certified Invisalign provider since 2007, Dr. James is dedicated to empowering her patients
-              by exploring every modern dental solution available to enhance their smiles.<br><br>When she isn't in the
-              office, you'll likely find her on the tennis or pickleball courts, experimenting with new recipes in the
-              kitchen, or cheering at local high school sporting events.</p>
-          </div>
-        </div>
-        <button class="doctor-bio-btn">Read Bio</button>
       </div>
 
       <div class="doctor-card reveal reveal-delay-1" data-name="Dr. Paula Rodriguez"
@@ -1905,30 +1890,29 @@
         <div class="doctor-photo">
           <img src="images/paula_rodriguez_dds.jpg" alt="Dr. Paula Rodriguez"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
+          <button class="doctor-about-btn" aria-label="About Dr. Rodriguez">About</button>
+          <div class="doctor-overlay">
+            <div class="doctor-overlay-inner">
+              <div class="doctor-overlay-name">Dr. Paula Rodriguez</div>
+              <div class="doctor-overlay-creds">D.D.S. &middot; Restorative &amp; Implants</div>
+              <p class="doctor-overlay-blurb">Dr. Paula Rodriguez is all about providing
+                high-quality, advanced dental care in a space where you can truly feel at home. She loves working with
+                patients of all ages and is always excited to bring the latest dental tech and techniques into her
+                practice.<br><br>A Liberty local since moving from Peru at age six, Paula's passion for dentistry started
+                early. After graduating from Liberty High School, she headed to UMKC, where she earned degrees in
+                Chemistry, Psychology, and Spanish before completing her dental degree.<br><br>She's never stopped
+                learning, either. Paula has pursued specialized training in dental implants and Invisalign and stays
+                active in the American Dental Association and the Greater Kansas City Dental Society to ensure her
+                patients get the very best.<br><br>When she's not helping patients smile, you'll likely find her
+                volunteering in the community or cheering on the Chiefs and Royals.</p>
+            </div>
+          </div>
         </div>
         <div class="doctor-info">
           <div class="doctor-name">Dr. Paula Rodriguez</div>
           <div class="doctor-creds">D.D.S.</div>
           <div class="doctor-specialty">Restorative &amp; Implant Dentistry</div>
         </div>
-        <button class="doctor-about-btn" aria-label="About Dr. Rodriguez">About</button>
-        <div class="doctor-overlay">
-          <div class="doctor-overlay-inner">
-            <div class="doctor-overlay-name">Dr. Paula Rodriguez</div>
-            <div class="doctor-overlay-creds">D.D.S. &middot; Restorative &amp; Implants</div>
-            <p class="doctor-overlay-blurb" style="font-size:0.92rem;">Dr. Paula Rodriguez is all about providing
-              high-quality, advanced dental care in a space where you can truly feel at home. She loves working with
-              patients of all ages and is always excited to bring the latest dental tech and techniques into her
-              practice.<br><br>A Liberty local since moving from Peru at age six, Paula's passion for dentistry started
-              early. After graduating from Liberty High School, she headed to UMKC, where she earned degrees in
-              Chemistry, Psychology, and Spanish before completing her dental degree.<br><br>She's never stopped
-              learning, either. Paula has pursued specialized training in dental implants and Invisalign and stays
-              active in the American Dental Association and the Greater Kansas City Dental Society to ensure her
-              patients get the very best.<br><br>When she's not helping patients smile, you'll likely find her
-              volunteering in the community or cheering on the Chiefs and Royals.</p>
-          </div>
-        </div>
-        <button class="doctor-bio-btn">Read Bio</button>
       </div>
 
       <div class="doctor-card reveal reveal-delay-2" data-name="Dr. Rachel Kim"
@@ -1937,31 +1921,30 @@
         <div class="doctor-photo">
           <img src="images/rachel_kim_dds.jpg" alt="Dr. Rachel Kim"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
+          <button class="doctor-about-btn" aria-label="About Dr. Kim">About</button>
+          <div class="doctor-overlay">
+            <div class="doctor-overlay-inner">
+              <div class="doctor-overlay-name">Dr. Rachel Kim</div>
+              <div class="doctor-overlay-creds">D.D.S. &middot; Pediatric &amp; Preventive</div>
+              <p class="doctor-overlay-blurb">A native of New York City, Dr. Rachel Kim hails from the Empire State. She
+                earned her B.A. from New York University and her Doctor of Dental Surgery degree from the University at
+                Buffalo School of Dental Medicine. She then completed her residency training at the Albert Einstein
+                Medical Center in Philadelphia, where she learned advanced skills in restorative and surgical dentistry.
+                Each year, Dr. Kim invests numerous hours to stay on top of the latest practices to deliver high quality
+                care to all her patients. She is an active member of a dentist study club in Overland Park, KS.<br><br>Dr.
+                Kim is an Invisalign-certified dentist and enjoys helping patients achieve their dream smile. She
+                currently heads the Service Committee for the Kansas City Women Dentists group and actively looks for ways
+                to give back to our community.<br><br>In her free time, Dr. Kim enjoys spoiling her Corgis, Hank and Lily.
+                Whether it's connecting with old friends, or making new ones, Dr. Kim is known for her kindness, warm
+                personality, and positive attitude.</p>
+            </div>
+          </div>
         </div>
         <div class="doctor-info">
           <div class="doctor-name">Dr. Rachel Kim</div>
           <div class="doctor-creds">D.D.S.</div>
           <div class="doctor-specialty">Pediatric &amp; Preventive Care</div>
         </div>
-        <button class="doctor-about-btn" aria-label="About Dr. Kim">About</button>
-        <div class="doctor-overlay">
-          <div class="doctor-overlay-inner">
-            <div class="doctor-overlay-name">Dr. Rachel Kim</div>
-            <div class="doctor-overlay-creds">D.D.S. &middot; Pediatric &amp; Preventive</div>
-            <p class="doctor-overlay-blurb">A native of New York City, Dr. Rachel Kim hails from the Empire State. She
-              earned her B.A. from New York University and her Doctor of Dental Surgery degree from the University at
-              Buffalo School of Dental Medicine. She then completed her residency training at the Albert Einstein
-              Medical Center in Philadelphia, where she learned advanced skills in restorative and surgical dentistry.
-              Each year, Dr. Kim invests numerous hours to stay on top of the latest practices to deliver high quality
-              care to all her patients. She is an active member of a dentist study club in Overland Park, KS.<br><br>Dr.
-              Kim is an Invisalign-certified dentist and enjoys helping patients achieve their dream smile. She
-              currently heads the Service Committee for the Kansas City Women Dentists group and actively looks for ways
-              to give back to our community.<br><br>In her free time, Dr. Kim enjoys spoiling her Corgis, Hank and Lily.
-              Whether it's connecting with old friends, or making new ones, Dr. Kim is known for her kindness, warm
-              personality, and positive attitude.</p>
-          </div>
-        </div>
-        <button class="doctor-bio-btn">Read Bio</button>
       </div>
     </div>
   </section>
