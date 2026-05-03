@@ -706,6 +706,7 @@
 
     .doctor-photo:hover .doctor-overlay {
       opacity: 1;
+      pointer-events: auto;
     }
 
     .doctor-overlay-inner {
@@ -1341,15 +1342,6 @@
     @media (max-width: 1024px) {
       .doctors-grid {
         grid-template-columns: repeat(2, 1fr);
-      }
-
-      .doctor-overlay {
-        opacity: 1;
-        background: linear-gradient(180deg, rgba(10, 10, 10, 0) 40%, rgba(10, 10, 10, 0.85) 100%);
-      }
-
-      .doctor-overlay-inner {
-        transform: translateY(0);
       }
     }
 
