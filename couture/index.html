@@ -887,6 +887,60 @@
       user-select: none;
     }
 
+    /* ── TESTIMONIAL CAROUSEL ── */
+    .testimonial-carousel {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .testimonial-text {
+      opacity: 0;
+      transition: opacity 0.8s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+    }
+
+    .testimonial-text.active {
+      opacity: 1;
+      position: relative;
+    }
+
+    .testimonial-author {
+      opacity: 0;
+      transition: opacity 0.8s ease 0.2s;
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-top: 16px;
+    }
+
+    .testimonial-author.active {
+      opacity: 1;
+    }
+
+    .testimonial-dots {
+      display: flex;
+      gap: 8px;
+      margin-top: 28px;
+    }
+
+    .testimonial-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--rose-deep);
+      opacity: 0.25;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .testimonial-dot.active {
+      opacity: 1;
+    }
+
     .featured-quote-text {
       font-family: var(--font-body);
       font-size: clamp(1.5rem, 2.5vw, 2.2rem);
@@ -1952,11 +2006,11 @@
       <div class="quote-stars">
         <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
       </div>
-      <p class="featured-quote-text">
-        I've been coming to Personal Care Dental for over 15 years. Every single visit feels like being cared for by
-        family — professional, warm, and always exceptional.
-      </p>
-      <div class="quote-author">— M. Thompson, Patient since 2009</div>
+      <div class="testimonial-carousel">
+        <p class="featured-quote-text testimonial-text active"></p>
+        <div class="quote-author testimonial-author"></div>
+      </div>
+      <div class="testimonial-dots"></div>
     </div>
     <div class="review-cards reveal reveal-delay-2">
       <div class="review-card">
@@ -2177,6 +2231,75 @@
 
     // Clicking backdrop closes modal
     document.querySelector('.doctor-modal-backdrop').addEventListener('click', closeDoctorModal);
+
+    // Testimonial carousel
+    const testimonials = [
+      { text: "As always, everyone is friendly and professional. I love, love, love my appointments and the time I spend with the entire team. Awesome and relaxing like being at the spa.", author: "— Michelle Davis" },
+      { text: "The best dentist office I've ever been to. The people that work there are friendly and Dr. Richardson was phenomenal. I would tell anybody to go here.", author: "— Kirsten Hudson" },
+      { text: "Dental hygienist, Kristy, is fantastic. She is efficient, friendly & does take pride & care when working with a client. Dr. James is the best dentist for me. Again, pride, compassion & care for the client. Totally satisfied with your services.", author: "— Sally Lamar" },
+      { text: "Recent check-up and cleaning proved to be worthwhile. All staff greeted me with a warm smile and willingness to do whatever was needed. Cleaning, by Christie, was carefully and painlessly done. Dr. Rubelita James performed the follow-up so nothing was overlooked. I heartily recommend Personal Care Dental to anyone who may be looking for a wonderful Dental Group.", author: "— Roger Pool" },
+      { text: "I'm entirely nervous when it comes to the Dentist and usually hop dentist to dentist to find the right place. But after my boyfriend suggested this place, I haven't gone anywhere for the past couple of years. They do such a great job. They are patient & absolutely caring for your needs. I plan on never going anywhere else! Dr. James is the best!", author: "— Emily Foster" },
+      { text: "I love Personal Care Dental. All the ladies are so sweet. They make you feel so comfortable. The dentist is great and very informative and straight forward. I used to be so afraid to go to the dentist! I'm glad my daughter Ronisha recommended them to me. Looking forward to my next visit.", author: "— Ronette Conway" },
+      { text: "Thanks for always making my family and I feel special when we call or have a visit. I hope you all had a great thanksgiving and wish all of you a VERY MERRY CHRISTMAS!!!", author: "— Brenda Butler" },
+      { text: "I have been taking my children here since they were six months old. I will continue to use this office until they all move away or the Doctor is not in business anymore. He is the best dentist in the area. I have recommended him to people as far away as Lawson and they love him to death also.", author: "— Allen Branstietter" },
+      { text: "Dr. Barreca seemed passionate about the care he provided. He did a very thorough exam and provided answers to all of my questions. His confidence and delivery assured me that I was in the perfect place for my dental healthcare.", author: "— Stephen Richard" },
+      { text: "I like the extra attention and care that I receive from everyone. This is the first dentist office I have been to that I can say truly cares about the patients. They are so attentive to all of your needs, especially for us scaredy cats.", author: "— Lydia Reese" },
+      { text: "The staff is simply the best there is! They all work together as a team. They make it obvious that they love their job and care about their patients. They are the best office staff I have ever dealt with. I love PCDG!", author: "— Christel Rouse" },
+      { text: "Your office runs like a well oiled machine but is still warm and friendly. I love it! The staff is just wonderful — it's like going home. Keep it up!", author: "— Melisande Teasley" },
+      { text: "Dr. James is blessed with the skills to perform dentistry gently and fast!!!", author: "— Belinda" },
+      { text: "Dr. Richardson is so friendly and caring and always makes me feel comfortable when I come.", author: "— Brooke Sowers" },
+      { text: "I like the private rooms, customer service, watching movies during procedures.", author: "— Erika" },
+      { text: "The cleanliness of the office and the proficiency of the dentists and the assistants is what I like the most.", author: "— Toni" },
+      { text: "I want to say thank you to everyone that helped in my dental treatment. You all rock and I'm definitely letting all my friends know how kind and gentle you are!", author: "— Katie Richardson" },
+      { text: "Not having to wait and getting treated very respectfully and kindly is what I like the most about Personal Care Dental Group.", author: "— Karen" },
+      { text: "Dr. Richardson was very caring and addressed all of my concerns.", author: "— Judy Duvall-Jarrett" },
+      { text: "Personal Care Dental Group is kind, non judgmental and empathetic.", author: "— Laura" }
+    ];
+
+    const textEl = document.querySelector('.testimonial-text');
+    const authorEl = document.querySelector('.testimonial-author');
+    const dotsContainer = document.querySelector('.testimonial-dots');
+    let currentTestimonial = 0;
+    let testimonialTimer;
+
+    // Build dots
+    testimonials.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.classList.add('testimonial-dot');
+      if (i === 0) dot.classList.add('active');
+      dot.addEventListener('click', () => {
+        clearInterval(testimonialTimer);
+        showTestimonial(i);
+        testimonialTimer = setInterval(nextTestimonial, 6000);
+      });
+      dotsContainer.appendChild(dot);
+    });
+
+    function showTestimonial(index) {
+      const dots = document.querySelectorAll('.testimonial-dot');
+      textEl.classList.remove('active');
+      authorEl.classList.remove('active');
+      setTimeout(() => {
+        textEl.textContent = testimonials[index].text;
+        authorEl.textContent = testimonials[index].author;
+        textEl.classList.add('active');
+        authorEl.classList.add('active');
+        dots.forEach((d, i) => d.classList.toggle('active', i === index));
+        currentTestimonial = index;
+      }, 800);
+    }
+
+    function nextTestimonial() {
+      const next = (currentTestimonial + 1) % testimonials.length;
+      showTestimonial(next);
+    }
+
+    // Init
+    textEl.textContent = testimonials[0].text;
+    authorEl.textContent = testimonials[0].author;
+    textEl.classList.add('active');
+    authorEl.classList.add('active');
+    testimonialTimer = setInterval(nextTestimonial, 6000);
 
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
