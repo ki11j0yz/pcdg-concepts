@@ -690,15 +690,18 @@
 
     .doctor-overlay {
       position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.0) 0%, rgba(10, 10, 10, 0.75) 25%, rgba(10, 10, 10, 0.97) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0) 0%, rgba(10, 10, 10, 0.82) 35%, rgba(10, 10, 10, 0.97) 100%);
       opacity: 0;
       transition: opacity 0.4s ease;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      pointer-events: none;
     }
 
     .doctor-photo:hover .doctor-overlay {
@@ -706,13 +709,14 @@
     }
 
     .doctor-overlay-inner {
-      padding: 24px 20px;
+      padding: 20px;
       overflow-y: auto;
       max-height: 100%;
-      transform: translateY(16px);
+      transform: translateY(12px);
       transition: transform 0.5s ease;
       scrollbar-width: thin;
       scrollbar-color: var(--gold-light) transparent;
+      flex-shrink: 0;
     }
 
     .doctor-overlay-inner::-webkit-scrollbar {
@@ -754,6 +758,110 @@
       line-height: 1.65;
       color: rgba(250, 246, 240, 0.88);
       font-weight: 400;
+    }
+
+    /* ── DOCTOR MODAL (used on BOTH desktop and mobile) ── */
+    .doctor-modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .doctor-modal.open {
+      display: flex;
+    }
+
+    .doctor-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(10, 10, 10, 0.88);
+      backdrop-filter: blur(6px);
+      cursor: pointer;
+    }
+
+    .doctor-modal-card {
+      position: relative;
+      z-index: 1;
+      background: var(--cream);
+      width: 92%;
+      max-width: 460px;
+      max-height: 88vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      padding: 36px 28px 44px;
+      animation: modalSlideUp 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      scrollbar-color: var(--gold-light) transparent;
+    }
+
+    .doctor-modal-card::-webkit-scrollbar {
+      display: none;
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        transform: translateY(24px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .doctor-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: var(--cream-mid);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--ink);
+    }
+
+    .doctor-modal-img {
+      width: 80px;
+      height: 80px;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 50%;
+      margin-bottom: 16px;
+      display: block;
+    }
+
+    .doctor-modal-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    .doctor-modal-creds {
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose-deep);
+      margin-bottom: 20px;
+    }
+
+    .doctor-modal-bio {
+      font-family: var(--font-body);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--text-mid);
+      white-space: pre-line;
     }
 
     /* ── TESTIMONIALS ── */
@@ -1448,12 +1556,8 @@
         display: none;
       }
 
-      .doctor-about-btn {
-        display: block;
-      }
-
-      .doctor-bio-btn {
-        display: none;
+      .doctor-photo {
+        cursor: pointer;
       }
 
       /* ── TESTIMONIALS ── */
@@ -1543,125 +1647,6 @@
       }
 
     }
-
-    /* ── DOCTOR ABOUT BUTTON (mobile only) ── */
-    .doctor-about-btn {
-      display: none;
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      z-index: 10;
-      background: rgba(10, 10, 10, 0.6);
-      color: var(--cream);
-      border: 1px solid rgba(250, 246, 240, 0.4);
-      font-family: var(--font-body);
-      font-size: 0.6rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      padding: 6px 12px;
-      border-radius: 100px;
-      cursor: pointer;
-      backdrop-filter: blur(8px);
-    }
-
-    /* ── DOCTOR MODAL ── */
-    .doctor-modal {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 1000;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .doctor-modal.open {
-      display: flex;
-    }
-
-    .doctor-modal-backdrop {
-      position: absolute;
-      inset: 0;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(6px);
-    }
-
-    .doctor-modal-card {
-      position: relative;
-      z-index: 1;
-      background: var(--cream);
-      width: 92%;
-      max-width: 420px;
-      max-height: 88vh;
-      overflow-y: auto;
-      border-radius: 20px;
-      padding: 32px 28px 40px;
-      animation: modalSlideUp 0.35s cubic-bezier(0.32, 0.72, 0, 1);
-      scrollbar-width: thin;
-      scrollbar-color: var(--gold-light) transparent;
-    }
-
-    @keyframes modalSlideUp {
-      from {
-        transform: translateY(30px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .doctor-modal-close {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      background: var(--cream-mid);
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 0.8rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--ink);
-    }
-
-    .doctor-modal-img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 50%;
-      margin-bottom: 16px;
-      display: block;
-    }
-
-    .doctor-modal-name {
-      font-family: var(--font-display);
-      font-size: 1.4rem;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .doctor-modal-creds {
-      font-size: 0.65rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      color: var(--rose-deep);
-      margin-bottom: 20px;
-    }
-
-    .doctor-modal-bio {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--text-mid);
-      white-space: pre-line;
-    }
-
   </style>
 </head>
 
@@ -1861,17 +1846,20 @@
         <div class="doctor-photo">
           <img src="images/rubelita_james_dds.jpg" alt="Dr. Rubelita R. James"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
-          <button class="doctor-about-btn" aria-label="About Dr. James">About</button>
           <div class="doctor-overlay">
             <div class="doctor-overlay-inner">
               <div class="doctor-overlay-name">Dr. Rubelita R. James</div>
               <div class="doctor-overlay-creds">D.D.S. &middot; General &amp; Cosmetic</div>
-              <p class="doctor-overlay-blurb">Dr. Rubelita James is a seasoned expert with over 35 years of experience. A
+              <p class="doctor-overlay-blurb">Dr. Rubelita James is a seasoned expert with over 35 years of experience.
+                A
                 pioneer in her field, she graduated from the University of Missouri-Kansas City School of Dentistry in
-                1989 as the youngest member of the inaugural six-year dental class.<br><br>Today, she serves as the senior
+                1989 as the youngest member of the inaugural six-year dental class.<br><br>Today, she serves as the
+                senior
                 partner at Personal Care Dental Group, where she combines a deep passion for oral health with modern
-                innovation. A certified Invisalign provider since 2007, Dr. James is dedicated to empowering her patients
-                by exploring every modern dental solution available to enhance their smiles.<br><br>When she isn't in the
+                innovation. A certified Invisalign provider since 2007, Dr. James is dedicated to empowering her
+                patients
+                by exploring every modern dental solution available to enhance their smiles.<br><br>When she isn't in
+                the
                 office, you'll likely find her on the tennis or pickleball courts, experimenting with new recipes in the
                 kitchen, or cheering at local high school sporting events.</p>
             </div>
@@ -1890,7 +1878,6 @@
         <div class="doctor-photo">
           <img src="images/paula_rodriguez_dds.jpg" alt="Dr. Paula Rodriguez"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
-          <button class="doctor-about-btn" aria-label="About Dr. Rodriguez">About</button>
           <div class="doctor-overlay">
             <div class="doctor-overlay-inner">
               <div class="doctor-overlay-name">Dr. Paula Rodriguez</div>
@@ -1898,7 +1885,8 @@
               <p class="doctor-overlay-blurb">Dr. Paula Rodriguez is all about providing
                 high-quality, advanced dental care in a space where you can truly feel at home. She loves working with
                 patients of all ages and is always excited to bring the latest dental tech and techniques into her
-                practice.<br><br>A Liberty local since moving from Peru at age six, Paula's passion for dentistry started
+                practice.<br><br>A Liberty local since moving from Peru at age six, Paula's passion for dentistry
+                started
                 early. After graduating from Liberty High School, she headed to UMKC, where she earned degrees in
                 Chemistry, Psychology, and Spanish before completing her dental degree.<br><br>She's never stopped
                 learning, either. Paula has pursued specialized training in dental implants and Invisalign and stays
@@ -1921,7 +1909,6 @@
         <div class="doctor-photo">
           <img src="images/rachel_kim_dds.jpg" alt="Dr. Rachel Kim"
             style="width:100%;height:100%;object-fit:cover;object-position:center top;display:block;" />
-          <button class="doctor-about-btn" aria-label="About Dr. Kim">About</button>
           <div class="doctor-overlay">
             <div class="doctor-overlay-inner">
               <div class="doctor-overlay-name">Dr. Rachel Kim</div>
@@ -1931,10 +1918,13 @@
                 Buffalo School of Dental Medicine. She then completed her residency training at the Albert Einstein
                 Medical Center in Philadelphia, where she learned advanced skills in restorative and surgical dentistry.
                 Each year, Dr. Kim invests numerous hours to stay on top of the latest practices to deliver high quality
-                care to all her patients. She is an active member of a dentist study club in Overland Park, KS.<br><br>Dr.
+                care to all her patients. She is an active member of a dentist study club in Overland Park,
+                KS.<br><br>Dr.
                 Kim is an Invisalign-certified dentist and enjoys helping patients achieve their dream smile. She
-                currently heads the Service Committee for the Kansas City Women Dentists group and actively looks for ways
-                to give back to our community.<br><br>In her free time, Dr. Kim enjoys spoiling her Corgis, Hank and Lily.
+                currently heads the Service Committee for the Kansas City Women Dentists group and actively looks for
+                ways
+                to give back to our community.<br><br>In her free time, Dr. Kim enjoys spoiling her Corgis, Hank and
+                Lily.
                 Whether it's connecting with old friends, or making new ones, Dr. Kim is known for her kindness, warm
                 personality, and positive attitude.</p>
             </div>
@@ -2163,30 +2153,38 @@
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script>
-    // Doctor bio modal
+    // Doctor modal — photo click on mobile, hover on desktop
     const doctorModal = document.getElementById('doctor-modal');
     const modalImg = document.getElementById('modal-img');
     const modalName = document.getElementById('modal-name');
     const modalCreds = document.getElementById('modal-creds');
     const modalBio = document.getElementById('modal-bio');
 
-    document.querySelectorAll('.doctor-about-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const card = btn.closest('.doctor-card');
-        modalImg.src = card.dataset.img;
-        modalImg.alt = card.dataset.name;
-        modalName.textContent = card.dataset.name;
-        modalCreds.textContent = card.dataset.creds;
-        modalBio.textContent = card.dataset.bio;
-        doctorModal.classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-    });
+    function openDoctorModal(card) {
+      modalImg.src = card.dataset.img;
+      modalImg.alt = card.dataset.name;
+      modalName.textContent = card.dataset.name;
+      modalCreds.textContent = card.dataset.creds;
+      modalBio.textContent = card.dataset.bio.replace(/\\n/g, '\n');
+      doctorModal.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
 
     function closeDoctorModal() {
       doctorModal.classList.remove('open');
       document.body.style.overflow = '';
     }
+
+    // Clicking the photo opens modal on ALL screen sizes
+    document.querySelectorAll('.doctor-photo').forEach(photo => {
+      photo.addEventListener('click', () => {
+        const card = photo.closest('.doctor-card');
+        openDoctorModal(card);
+      });
+    });
+
+    // Clicking backdrop closes modal
+    document.querySelector('.doctor-modal-backdrop').addEventListener('click', closeDoctorModal);
 
     // Hamburger menu
     const hamburger = document.getElementById('hamburger');
